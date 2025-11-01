@@ -1,4 +1,4 @@
-﻿@model NetCore_Update.Models.Invent.SalesOrder
+﻿@model QuanLyKho.Models.Invent.SalesOrder
 
 @{
     ViewData["Title"] = "Delete";
@@ -6,7 +6,7 @@
     ViewData["EntityIcon"] = "fa fa-cart-plus";
     ViewData["DeleteInfo"] = "[Completed] Sales Order (SO) can not be deleted. Rollback status to [Open] by deleting related Delivery Order (Shipment)";
     ViewData["IsCanDeleted"] = false;
-    if (Model.salesOrderStatus != NetCore_Update.Models.Invent.SalesOrderStatus.Completed)
+    if (Model.salesOrderStatus != QuanLyKho.Models.Invent.SalesOrderStatus.Completed)
     {
         ViewData["IsCanDeleted"] = true;
     }

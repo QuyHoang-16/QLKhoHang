@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 
-namespace NetCore_Update.Models.ManageViewModels
+namespace QuanLyKho.Models.ManageViewModels
 {
     public class ExternalLoginsViewModel
     {

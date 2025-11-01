@@ -1,10 +1,10 @@
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NetCore_Update.Models;
-using NetCore_Update.Services;
+using QuanLyKho.Models;
+using QuanLyKho.Services;
 
-namespace NetCore_Update.Data
+namespace QuanLyKho.Data
 {
     public static class DbInitializer
     {

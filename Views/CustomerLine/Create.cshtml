@@ -1,4 +1,4 @@
-﻿@model NetCore_Update.Models.Invent.CustomerLine
+﻿@model QuanLyKho.Models.Invent.CustomerLine
 
 
 @{
@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <label class="control-label">Xưng hô</label>
                     <select asp-for="salutation" class="form-control select2"
-                            asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.Salutation>()"></select>
+                            asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.Salutation>()"></select>
                     <span asp-validation-for="salutation" class="text-danger"></span>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 <div class="form-group">
                     <label class="control-label">Giới tính</label>
                     <select asp-for="gender" class="form-control select2"
-                            asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.Gender>()"></select>
+                            asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.Gender>()"></select>
                     <span asp-validation-for="gender" class="text-danger"></span>
                 </div>
             </div>

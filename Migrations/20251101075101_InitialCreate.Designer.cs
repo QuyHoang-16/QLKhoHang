@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NetCore_Update.Data;
+using QuanLyKho.Data;
 
 #nullable disable
 
-namespace NetCore_Update.Migrations
+namespace QuanLyKho.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20251101075101_InitialCreate")]
@@ -157,7 +157,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.ApplicationUser", b =>
+            modelBuilder.Entity("QuanLyKho.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -298,7 +298,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Branch", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Branch", b =>
                 {
                     b.Property<string>("branchId")
                         .HasMaxLength(38)
@@ -365,7 +365,7 @@ namespace NetCore_Update.Migrations
                         });
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Customer", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Customer", b =>
                 {
                     b.Property<string>("customerId")
                         .HasMaxLength(38)
@@ -437,7 +437,7 @@ namespace NetCore_Update.Migrations
                         });
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.CustomerLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.CustomerLine", b =>
                 {
                     b.Property<string>("customerLineId")
                         .HasMaxLength(38)
@@ -514,7 +514,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("CustomerLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Product", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Product", b =>
                 {
                     b.Property<string>("productId")
                         .HasMaxLength(38)
@@ -585,7 +585,7 @@ namespace NetCore_Update.Migrations
                         });
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.PurchaseOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.PurchaseOrder", b =>
                 {
                     b.Property<string>("purchaseOrderId")
                         .HasMaxLength(38)
@@ -676,7 +676,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("PurchaseOrders");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.PurchaseOrderLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.PurchaseOrderLine", b =>
                 {
                     b.Property<string>("purchaseOrderLineId")
                         .HasMaxLength(38)
@@ -719,7 +719,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("PurchaseOrderLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Receiving", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Receiving", b =>
                 {
                     b.Property<string>("receivingId")
                         .HasMaxLength(38)
@@ -783,7 +783,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("Receivings");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.ReceivingLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.ReceivingLine", b =>
                 {
                     b.Property<string>("receivingLineId")
                         .HasMaxLength(38)
@@ -839,7 +839,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("ReceivingLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.SalesOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.SalesOrder", b =>
                 {
                     b.Property<string>("salesOrderId")
                         .HasMaxLength(38)
@@ -930,7 +930,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("SalesOrders");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.SalesOrderLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.SalesOrderLine", b =>
                 {
                     b.Property<string>("salesOrderLineId")
                         .HasMaxLength(38)
@@ -973,7 +973,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("SalesOrderLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Shipment", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Shipment", b =>
                 {
                     b.Property<string>("shipmentId")
                         .HasMaxLength(38)
@@ -1043,7 +1043,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("Shipments");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.ShipmentLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.ShipmentLine", b =>
                 {
                     b.Property<string>("shipmentLineId")
                         .HasMaxLength(38)
@@ -1099,7 +1099,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("ShipmentLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferIn", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferIn", b =>
                 {
                     b.Property<string>("transferInId")
                         .HasMaxLength(38)
@@ -1165,7 +1165,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("TransferIns");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferInLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferInLine", b =>
                 {
                     b.Property<string>("transferInLineId")
                         .HasMaxLength(38)
@@ -1199,7 +1199,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("TransferInLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOrder", b =>
                 {
                     b.Property<string>("transferOrderId")
                         .HasMaxLength(38)
@@ -1272,7 +1272,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("TransferOrders");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOrderLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOrderLine", b =>
                 {
                     b.Property<string>("transferOrderLineId")
                         .HasMaxLength(38)
@@ -1303,7 +1303,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("TransferOrderLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOut", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOut", b =>
                 {
                     b.Property<string>("transferOutId")
                         .HasMaxLength(38)
@@ -1369,7 +1369,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("TransferOuts");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOutLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOutLine", b =>
                 {
                     b.Property<string>("transferOutLineId")
                         .HasMaxLength(38)
@@ -1403,7 +1403,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("TransferOutLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Vendor", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Vendor", b =>
                 {
                     b.Property<string>("vendorId")
                         .HasMaxLength(38)
@@ -1475,7 +1475,7 @@ namespace NetCore_Update.Migrations
                         });
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.VendorLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.VendorLine", b =>
                 {
                     b.Property<string>("vendorLineId")
                         .HasMaxLength(38)
@@ -1552,7 +1552,7 @@ namespace NetCore_Update.Migrations
                     b.ToTable("VendorLines");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Warehouse", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Warehouse", b =>
                 {
                     b.Property<string>("warehouseId")
                         .HasMaxLength(38)
@@ -1634,7 +1634,7 @@ namespace NetCore_Update.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.ApplicationUser", null)
+                    b.HasOne("QuanLyKho.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1643,7 +1643,7 @@ namespace NetCore_Update.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.ApplicationUser", null)
+                    b.HasOne("QuanLyKho.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1658,7 +1658,7 @@ namespace NetCore_Update.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.ApplicationUser", null)
+                    b.HasOne("QuanLyKho.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1667,16 +1667,16 @@ namespace NetCore_Update.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.ApplicationUser", null)
+                    b.HasOne("QuanLyKho.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.CustomerLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.CustomerLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Customer", "customer")
+                    b.HasOne("QuanLyKho.Models.Invent.Customer", "customer")
                         .WithMany("customerLine")
                         .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1685,15 +1685,15 @@ namespace NetCore_Update.Migrations
                     b.Navigation("customer");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.PurchaseOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.PurchaseOrder", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branch")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branch")
                         .WithMany()
                         .HasForeignKey("branchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Vendor", "vendor")
+                    b.HasOne("QuanLyKho.Models.Invent.Vendor", "vendor")
                         .WithMany()
                         .HasForeignKey("vendorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1704,15 +1704,15 @@ namespace NetCore_Update.Migrations
                     b.Navigation("vendor");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.PurchaseOrderLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.PurchaseOrderLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Product", "product")
+                    b.HasOne("QuanLyKho.Models.Invent.Product", "product")
                         .WithMany()
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.PurchaseOrder", "purchaseOrder")
+                    b.HasOne("QuanLyKho.Models.Invent.PurchaseOrder", "purchaseOrder")
                         .WithMany("purchaseOrderLine")
                         .HasForeignKey("purchaseOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1723,27 +1723,27 @@ namespace NetCore_Update.Migrations
                     b.Navigation("purchaseOrder");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Receiving", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Receiving", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branch")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branch")
                         .WithMany()
                         .HasForeignKey("branchId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.PurchaseOrder", "purchaseOrder")
+                    b.HasOne("QuanLyKho.Models.Invent.PurchaseOrder", "purchaseOrder")
                         .WithMany()
                         .HasForeignKey("purchaseOrderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Vendor", "vendor")
+                    b.HasOne("QuanLyKho.Models.Invent.Vendor", "vendor")
                         .WithMany()
                         .HasForeignKey("vendorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouse")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouse")
                         .WithMany()
                         .HasForeignKey("warehouseId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1758,31 +1758,31 @@ namespace NetCore_Update.Migrations
                     b.Navigation("warehouse");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.ReceivingLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.ReceivingLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branch")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branch")
                         .WithMany()
                         .HasForeignKey("branchId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Product", "product")
+                    b.HasOne("QuanLyKho.Models.Invent.Product", "product")
                         .WithMany()
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Receiving", "receiving")
+                    b.HasOne("QuanLyKho.Models.Invent.Receiving", "receiving")
                         .WithMany()
                         .HasForeignKey("receivingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Receiving", null)
+                    b.HasOne("QuanLyKho.Models.Invent.Receiving", null)
                         .WithMany("receivingLine")
                         .HasForeignKey("receivingId1");
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouse")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouse")
                         .WithMany()
                         .HasForeignKey("warehouseId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1797,15 +1797,15 @@ namespace NetCore_Update.Migrations
                     b.Navigation("warehouse");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.SalesOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.SalesOrder", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branch")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branch")
                         .WithMany()
                         .HasForeignKey("branchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Customer", "customer")
+                    b.HasOne("QuanLyKho.Models.Invent.Customer", "customer")
                         .WithMany()
                         .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1816,15 +1816,15 @@ namespace NetCore_Update.Migrations
                     b.Navigation("customer");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.SalesOrderLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.SalesOrderLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Product", "product")
+                    b.HasOne("QuanLyKho.Models.Invent.Product", "product")
                         .WithMany()
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.SalesOrder", "salesOrder")
+                    b.HasOne("QuanLyKho.Models.Invent.SalesOrder", "salesOrder")
                         .WithMany("salesOrderLine")
                         .HasForeignKey("salesOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1835,27 +1835,27 @@ namespace NetCore_Update.Migrations
                     b.Navigation("salesOrder");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Shipment", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Shipment", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branch")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branch")
                         .WithMany()
                         .HasForeignKey("branchId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Customer", "customer")
+                    b.HasOne("QuanLyKho.Models.Invent.Customer", "customer")
                         .WithMany()
                         .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.SalesOrder", "salesOrder")
+                    b.HasOne("QuanLyKho.Models.Invent.SalesOrder", "salesOrder")
                         .WithMany()
                         .HasForeignKey("salesOrderId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouse")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouse")
                         .WithMany()
                         .HasForeignKey("warehouseId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1870,31 +1870,31 @@ namespace NetCore_Update.Migrations
                     b.Navigation("warehouse");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.ShipmentLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.ShipmentLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branch")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branch")
                         .WithMany()
                         .HasForeignKey("branchId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Product", "product")
+                    b.HasOne("QuanLyKho.Models.Invent.Product", "product")
                         .WithMany()
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Shipment", "shipment")
+                    b.HasOne("QuanLyKho.Models.Invent.Shipment", "shipment")
                         .WithMany()
                         .HasForeignKey("shipmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Shipment", null)
+                    b.HasOne("QuanLyKho.Models.Invent.Shipment", null)
                         .WithMany("shipmentLine")
                         .HasForeignKey("shipmentId1");
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouse")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouse")
                         .WithMany()
                         .HasForeignKey("warehouseId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1909,33 +1909,33 @@ namespace NetCore_Update.Migrations
                     b.Navigation("warehouse");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferIn", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferIn", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branchFrom")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branchFrom")
                         .WithMany()
                         .HasForeignKey("branchIdFrom")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branchTo")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branchTo")
                         .WithMany()
                         .HasForeignKey("branchIdTo")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.TransferOrder", "transferOrder")
+                    b.HasOne("QuanLyKho.Models.Invent.TransferOrder", "transferOrder")
                         .WithMany()
                         .HasForeignKey("transferOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouseFrom")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouseFrom")
                         .WithMany()
                         .HasForeignKey("warehouseIdFrom")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouseTo")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouseTo")
                         .WithMany()
                         .HasForeignKey("warehouseIdTo")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -1952,15 +1952,15 @@ namespace NetCore_Update.Migrations
                     b.Navigation("warehouseTo");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferInLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferInLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Product", "product")
+                    b.HasOne("QuanLyKho.Models.Invent.Product", "product")
                         .WithMany()
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.TransferIn", "transferIn")
+                    b.HasOne("QuanLyKho.Models.Invent.TransferIn", "transferIn")
                         .WithMany("transferInLine")
                         .HasForeignKey("transferInId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1971,27 +1971,27 @@ namespace NetCore_Update.Migrations
                     b.Navigation("transferIn");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOrder", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branchFrom")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branchFrom")
                         .WithMany()
                         .HasForeignKey("branchIdFrom")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branchTo")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branchTo")
                         .WithMany()
                         .HasForeignKey("branchIdTo")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouseFrom")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouseFrom")
                         .WithMany()
                         .HasForeignKey("warehouseIdFrom")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouseTo")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouseTo")
                         .WithMany()
                         .HasForeignKey("warehouseIdTo")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -2006,15 +2006,15 @@ namespace NetCore_Update.Migrations
                     b.Navigation("warehouseTo");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOrderLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOrderLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Product", "product")
+                    b.HasOne("QuanLyKho.Models.Invent.Product", "product")
                         .WithMany()
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.TransferOrder", "transferOrder")
+                    b.HasOne("QuanLyKho.Models.Invent.TransferOrder", "transferOrder")
                         .WithMany("transferOrderLine")
                         .HasForeignKey("transferOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2025,33 +2025,33 @@ namespace NetCore_Update.Migrations
                     b.Navigation("transferOrder");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOut", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOut", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branchFrom")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branchFrom")
                         .WithMany()
                         .HasForeignKey("branchIdFrom")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branchTo")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branchTo")
                         .WithMany()
                         .HasForeignKey("branchIdTo")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.TransferOrder", "transferOrder")
+                    b.HasOne("QuanLyKho.Models.Invent.TransferOrder", "transferOrder")
                         .WithMany()
                         .HasForeignKey("transferOrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouseFrom")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouseFrom")
                         .WithMany()
                         .HasForeignKey("warehouseIdFrom")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.Warehouse", "warehouseTo")
+                    b.HasOne("QuanLyKho.Models.Invent.Warehouse", "warehouseTo")
                         .WithMany()
                         .HasForeignKey("warehouseIdTo")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -2068,15 +2068,15 @@ namespace NetCore_Update.Migrations
                     b.Navigation("warehouseTo");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOutLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOutLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Product", "product")
+                    b.HasOne("QuanLyKho.Models.Invent.Product", "product")
                         .WithMany()
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NetCore_Update.Models.Invent.TransferOut", "transferOut")
+                    b.HasOne("QuanLyKho.Models.Invent.TransferOut", "transferOut")
                         .WithMany("transferOutLine")
                         .HasForeignKey("transferOutId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2087,9 +2087,9 @@ namespace NetCore_Update.Migrations
                     b.Navigation("transferOut");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.VendorLine", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.VendorLine", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Vendor", "vendor")
+                    b.HasOne("QuanLyKho.Models.Invent.Vendor", "vendor")
                         .WithMany("vendorLine")
                         .HasForeignKey("vendorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2098,9 +2098,9 @@ namespace NetCore_Update.Migrations
                     b.Navigation("vendor");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Warehouse", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Warehouse", b =>
                 {
-                    b.HasOne("NetCore_Update.Models.Invent.Branch", "branch")
+                    b.HasOne("QuanLyKho.Models.Invent.Branch", "branch")
                         .WithMany()
                         .HasForeignKey("branchId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2109,47 +2109,47 @@ namespace NetCore_Update.Migrations
                     b.Navigation("branch");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Customer", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Customer", b =>
                 {
                     b.Navigation("customerLine");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.PurchaseOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.PurchaseOrder", b =>
                 {
                     b.Navigation("purchaseOrderLine");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Receiving", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Receiving", b =>
                 {
                     b.Navigation("receivingLine");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.SalesOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.SalesOrder", b =>
                 {
                     b.Navigation("salesOrderLine");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Shipment", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Shipment", b =>
                 {
                     b.Navigation("shipmentLine");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferIn", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferIn", b =>
                 {
                     b.Navigation("transferInLine");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOrder", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOrder", b =>
                 {
                     b.Navigation("transferOrderLine");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.TransferOut", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.TransferOut", b =>
                 {
                     b.Navigation("transferOutLine");
                 });
 
-            modelBuilder.Entity("NetCore_Update.Models.Invent.Vendor", b =>
+            modelBuilder.Entity("QuanLyKho.Models.Invent.Vendor", b =>
                 {
                     b.Navigation("vendorLine");
                 });

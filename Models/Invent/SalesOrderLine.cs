@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetCore_Update.Models.Invent
+namespace QuanLyKho.Models.Invent
 {
     public class SalesOrderLine : INetcoreBasic
     {

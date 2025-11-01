@@ -1,6 +1,6 @@
-﻿using NetCore_Update.Models;
+﻿using QuanLyKho.Models;
 
-namespace NetCore_Update.Services
+namespace QuanLyKho.Services
 {
     public interface IRoles
     {

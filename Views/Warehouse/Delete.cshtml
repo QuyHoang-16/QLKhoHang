@@ -1,14 +1,14 @@
-﻿@model NetCore_Update.Models.Invent.Warehouse
-@inject NetCore_Update.Data.ApplicationDbContext _context;
+﻿@model QuanLyKho.Models.Invent.Warehouse
+@inject QuanLyKho.Data.ApplicationDbContext _context;
 
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
     ViewData["EntityIcon"] = "fa fa-cubes";
     ViewData["DeleteInfo"] = "Warehouse that already have transactions (Receiving, Shipment, Transfer Order) can not be deleted.";
-    NetCore_Update.Models.Invent.Receiving receiving = _context.Receivings.Where(x => x.warehouseId.Equals(Model.warehouseId)).FirstOrDefault();
-    NetCore_Update.Models.Invent.Shipment shipment = _context.Shipments.Where(x => x.warehouseId.Equals(Model.warehouseId)).FirstOrDefault();
-    NetCore_Update.Models.Invent.TransferOrder to = _context.TransferOrders.Where(x => x.warehouseIdFrom.Equals(Model.warehouseId) || x.warehouseIdTo.Equals(Model.warehouseId)).FirstOrDefault();
+    QuanLyKho.Models.Invent.Receiving receiving = _context.Receivings.Where(x => x.warehouseId.Equals(Model.warehouseId)).FirstOrDefault();
+    QuanLyKho.Models.Invent.Shipment shipment = _context.Shipments.Where(x => x.warehouseId.Equals(Model.warehouseId)).FirstOrDefault();
+    QuanLyKho.Models.Invent.TransferOrder to = _context.TransferOrders.Where(x => x.warehouseIdFrom.Equals(Model.warehouseId) || x.warehouseIdTo.Equals(Model.warehouseId)).FirstOrDefault();
     ViewData["IsCanDeleted"] = false;
     if (receiving == null && shipment == null && to == null)
     {

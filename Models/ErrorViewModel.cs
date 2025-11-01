@@ -1,6 +1,6 @@
 using System;
 
-namespace NetCore_Update.Models
+namespace QuanLyKho.Models
 {
     public class ErrorViewModel
     {

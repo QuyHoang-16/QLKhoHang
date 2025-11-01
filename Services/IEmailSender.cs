@@ -1,4 +1,4 @@
-﻿namespace NetCore_Update.Services
+﻿namespace QuanLyKho.Services
 {
     public interface IEmailSender
     {

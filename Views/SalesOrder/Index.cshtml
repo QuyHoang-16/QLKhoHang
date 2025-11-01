@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NetCore_Update.Models.Invent.SalesOrder>
+﻿@model IEnumerable<QuanLyKho.Models.Invent.SalesOrder>
 
 @{
     ViewData["Title"] = "Index";
@@ -104,21 +104,21 @@
                     @Html.DisplayFor(modelItem => item.picCustomer)
                 </td>
                 <td>
-                    @if (item.salesOrderStatus == NetCore_Update.Models.Invent.SalesOrderStatus.Completed)
+                    @if (item.salesOrderStatus == QuanLyKho.Models.Invent.SalesOrderStatus.Completed)
                     {
                         <span class="label label-success">
                             @Html.DisplayFor(modelItem => item.salesOrderStatus)
                         </span>
 
                     }
-                    @if (item.salesOrderStatus == NetCore_Update.Models.Invent.SalesOrderStatus.Open)
+                    @if (item.salesOrderStatus == QuanLyKho.Models.Invent.SalesOrderStatus.Open)
                     {
                         <span class="label label-primary">
                             @Html.DisplayFor(modelItem => item.salesOrderStatus)
                         </span>
 
                     }
-                    @if (item.salesOrderStatus == NetCore_Update.Models.Invent.SalesOrderStatus.Draft)
+                    @if (item.salesOrderStatus == QuanLyKho.Models.Invent.SalesOrderStatus.Draft)
                     {
                         <span class="label label-warning">
                             @Html.DisplayFor(modelItem => item.salesOrderStatus)

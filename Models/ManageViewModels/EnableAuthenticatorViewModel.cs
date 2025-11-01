@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace NetCore_Update.Models.ManageViewModels
+namespace QuanLyKho.Models.ManageViewModels
 {
     public class EnableAuthenticatorViewModel
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using NetCore_Update.Models;
-using NetCore_Update.Models.Invent;
+using QuanLyKho.Models;
+using QuanLyKho.Models.Invent;
 
-namespace NetCore_Update.Services
+namespace QuanLyKho.Services
 {
     public interface INetcoreService
     {

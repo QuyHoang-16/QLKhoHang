@@ -1,4 +1,4 @@
-﻿@model NetCore_Update.Models.Invent.PurchaseOrder
+﻿@model QuanLyKho.Models.Invent.PurchaseOrder
 
 @{
     ViewData["Title"] = "Delete";
@@ -6,7 +6,7 @@
     ViewData["EntityIcon"] = "fa fa-file-text";
     ViewData["DeleteInfo"] = "[Completed] Purchase Order (PO) can not be deleted. Rollback status to [Open] by deleting related Purchase Receive (Receiving)";
     ViewData["IsCanDeleted"] = false;
-    if (Model.purchaseOrderStatus != NetCore_Update.Models.Invent.PurchaseOrderStatus.Completed)
+    if (Model.purchaseOrderStatus != QuanLyKho.Models.Invent.PurchaseOrderStatus.Completed)
     {
         ViewData["IsCanDeleted"] = true;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NetCore_Update
+namespace QuanLyKho
 {
     public class LoggingEvents
     {

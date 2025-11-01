@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using NetCore_Update.Data;
-using NetCore_Update.Models;
-using NetCore_Update.Models.Invent;
+using QuanLyKho.Data;
+using QuanLyKho.Models;
+using QuanLyKho.Models.Invent;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System.Net;
 using System.Net.Mail;
 
-namespace NetCore_Update.Services
+namespace QuanLyKho.Services
 {
     public class NetcoreService : INetcoreService
     {
@@ -188,7 +188,7 @@ namespace NetCore_Update.Services
                 await _userManager.CreateAsync(superAdmin, _superAdminDefaultOptions.Password);
 
                 //loop all the roles and then fill to SuperAdmin so he become powerfull
-                foreach (var item in typeof(NetCore_Update.MVC.Pages).GetNestedTypes())
+                foreach (var item in typeof(QuanLyKho.MVC.Pages).GetNestedTypes())
                 {
                     var roleName = item.Name;
                     if (!await _roleManager.RoleExistsAsync(roleName)) { await _roleManager.CreateAsync(new IdentityRole(roleName)); }

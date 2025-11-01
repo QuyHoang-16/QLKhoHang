@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NetCore_Update.Models;
+using QuanLyKho.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
-namespace NetCore_Update.Controllers
+namespace QuanLyKho.Controllers
 {
     [Authorize(Roles = "Home")]
     public class HomeController : Controller
@@ -56,7 +56,7 @@ namespace NetCore_Update.Controllers
     }
 }
 
-namespace NetCore_Update.MVC
+namespace QuanLyKho.MVC
 {
     public static partial class Pages
     {
@@ -70,7 +70,7 @@ namespace NetCore_Update.MVC
         }
     }
 }
-namespace NetCore_Update.Models
+namespace QuanLyKho.Models
 {
     public partial class ApplicationUser
     {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace NetCore_Update.Migrations
+namespace QuanLyKho.Migrations
 {
     public partial class InitialCreate : Migration
     {

@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NetCore_Update.Data;
-using NetCore_Update.Models.Invent;
+using QuanLyKho.Data;
+using QuanLyKho.Models.Invent;
 using System.ComponentModel.DataAnnotations;
 
-namespace NetCore_Update.Controllers.Invent
+namespace QuanLyKho.Controllers.Invent
 {
     [Authorize(Roles = "TransferInLine")]
     public class TransferInLineController : Controller
@@ -185,7 +185,7 @@ namespace NetCore_Update.Controllers.Invent
 }
 
 
-namespace NetCore_Update.MVC
+namespace QuanLyKho.MVC
 {
     public static partial class Pages
     {
@@ -199,7 +199,7 @@ namespace NetCore_Update.MVC
         }
     }
 }
-namespace NetCore_Update.Models
+namespace QuanLyKho.Models
 {
     public partial class ApplicationUser
     {

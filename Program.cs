@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using NetCore_Update.Data;
-using NetCore_Update.Models;
-using NetCore_Update.Services;
+using QuanLyKho.Data;
+using QuanLyKho.Models;
+using QuanLyKho.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.

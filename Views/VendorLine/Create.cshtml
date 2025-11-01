@@ -1,4 +1,4 @@
-﻿@model NetCore_Update.Models.Invent.VendorLine
+﻿@model QuanLyKho.Models.Invent.VendorLine
 
 
 @{
@@ -19,7 +19,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="salutation" class="control-label"></label>
-                    <select asp-for="salutation" class="form-control select2" asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.Salutation>()"></select>
+                    <select asp-for="salutation" class="form-control select2" asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.Salutation>()"></select>
                     <span asp-validation-for="salutation" class="text-danger"></span>
                 </div>
             </div>
@@ -63,7 +63,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="gender" class="control-label"></label>
-                    <select asp-for="gender" class="form-control select2" asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.Gender>()"></select>
+                    <select asp-for="gender" class="form-control select2" asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.Gender>()"></select>
                     <span asp-validation-for="gender" class="text-danger"></span>
                 </div>
             </div>

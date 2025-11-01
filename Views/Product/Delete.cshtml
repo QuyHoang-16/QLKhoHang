@@ -1,13 +1,13 @@
-﻿@model NetCore_Update.Models.Invent.Product
-@inject NetCore_Update.Data.ApplicationDbContext _context;
+﻿@model QuanLyKho.Models.Invent.Product
+@inject QuanLyKho.Data.ApplicationDbContext _context;
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
     ViewData["EntityIcon"] = "fa fa-tags";
     ViewData["DeleteInfo"] = "Product that already have transactions (PO, SO, Transfer Order) can not be deleted.";
-    NetCore_Update.Models.Invent.PurchaseOrderLine poline = _context.PurchaseOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
-    NetCore_Update.Models.Invent.SalesOrderLine soline = _context.SalesOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
-    NetCore_Update.Models.Invent.TransferOrderLine toline = _context.TransferOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
+    QuanLyKho.Models.Invent.PurchaseOrderLine poline = _context.PurchaseOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
+    QuanLyKho.Models.Invent.SalesOrderLine soline = _context.SalesOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
+    QuanLyKho.Models.Invent.TransferOrderLine toline = _context.TransferOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
     ViewData["IsCanDeleted"] = false;
     if (poline == null && soline == null && toline == null)
     {

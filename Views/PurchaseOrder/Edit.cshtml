@@ -1,4 +1,4 @@
-﻿@model NetCore_Update.Models.Invent.PurchaseOrder
+﻿@model QuanLyKho.Models.Invent.PurchaseOrder
 
 @{
     ViewData["Title"] = "Edit";
@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label class="control-label">Điều khoản thanh toán (TOP)</label>
                     <select asp-for="top" class="form-control select2"
-                            asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.TOP>()"></select>
+                            asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.TOP>()"></select>
                     <span asp-validation-for="top" class="text-danger"></span>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div class="form-group">
                     <label class="control-label">Trạng thái đơn hàng</label>
                     <select asp-for="purchaseOrderStatus" class="form-control select2"
-                            asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.PurchaseOrderStatus>()"></select>
+                            asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.PurchaseOrderStatus>()"></select>
                     <span asp-validation-for="purchaseOrderStatus" class="text-danger"></span>
                 </div>
             </div>

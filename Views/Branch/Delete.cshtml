@@ -1,11 +1,11 @@
-﻿@model NetCore_Update.Models.Invent.Branch
-@inject NetCore_Update.Data.ApplicationDbContext _context;
+﻿@model QuanLyKho.Models.Invent.Branch
+@inject QuanLyKho.Data.ApplicationDbContext _context;
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
     ViewData["EntityIcon"] = "fa fa-building-o";
     ViewData["DeleteInfo"] = "Branch that already have warehouses can not be deleted.";
-    NetCore_Update.Models.Invent.Warehouse wh = _context.Warehouses.Where(x => x.branchId.Equals(Model.branchId)).FirstOrDefault();
+    QuanLyKho.Models.Invent.Warehouse wh = _context.Warehouses.Where(x => x.branchId.Equals(Model.branchId)).FirstOrDefault();
     ViewData["IsCanDeleted"] = false;
     if (wh == null)
     {

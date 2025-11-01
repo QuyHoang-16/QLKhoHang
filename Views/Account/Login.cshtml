@@ -2,7 +2,7 @@
 @using System.Linq
 @using Microsoft.AspNetCore.Http
 @* @using Microsoft.AspNetCore.Http.authentication *@
-@model NetCore_Update.Models.AccountViewModels.LoginViewModel
+@model QuanLyKho.Models.AccountViewModels.LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
 @{
@@ -15,7 +15,7 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <div class="login-logo bg-primary">
-            <i class="fa fa-cubes"></i><a href="@NetCore_Update.MVC.Pages.HomeIndex.Url" style="color:white"><b>IN</b>VENTORY</a>
+            <i class="fa fa-cubes"></i><a href="@QuanLyKho.MVC.Pages.HomeIndex.Url" style="color:white"><b>IN</b>VENTORY</a>
         </div>
         <p class="login-box-msg">Sign in to start your session</p>
         <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">

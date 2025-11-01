@@ -1,4 +1,4 @@
-﻿@model NetCore_Update.Models.Invent.Customer
+﻿@model QuanLyKho.Models.Invent.Customer
 
 @{
     ViewData["Title"] = "Edit";
@@ -24,7 +24,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Quy mô doanh nghiệp</label>
-                    <select asp-for="size" class="form-control select2" asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.BusinessSize>()"></select>
+                    <select asp-for="size" class="form-control select2" asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.BusinessSize>()"></select>
                     <span asp-validation-for="size" class="text-danger"></span>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-﻿@model NetCore_Update.Models.Invent.Product
+﻿@model QuanLyKho.Models.Invent.Product
 
 
 @{
@@ -58,14 +58,14 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Loại sản phẩm</label>
-                    <select asp-for="productType" class="form-control select2" asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.ProductType>()"></select>
+                    <select asp-for="productType" class="form-control select2" asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.ProductType>()"></select>
                     <span asp-validation-for="productType" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Đơn vị tính</label>
-                    <select asp-for="uom" class="form-control select2" asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.UOM>()"></select>
+                    <select asp-for="uom" class="form-control select2" asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.UOM>()"></select>
                     <span asp-validation-for="uom" class="text-danger"></span>
                 </div>
             </div>

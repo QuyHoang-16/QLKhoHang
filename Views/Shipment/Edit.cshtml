@@ -1,4 +1,4 @@
-﻿@model NetCore_Update.Models.Invent.Shipment
+﻿@model QuanLyKho.Models.Invent.Shipment
 
 @{
     ViewData["Title"] = "Edit";
@@ -54,7 +54,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Loại vận chuyển</label>
-                    <select asp-for="expeditionType" class="form-control select2" asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.ExpeditionType>()"></select>
+                    <select asp-for="expeditionType" class="form-control select2" asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.ExpeditionType>()"></select>
                     <span asp-validation-for="expeditionType" class="text-danger"></span>
                 </div>
             </div>
@@ -62,7 +62,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Hình thức vận chuyển</label>
-                    <select asp-for="expeditionMode" class="form-control select2" asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.ExpeditionMode>()"></select>
+                    <select asp-for="expeditionMode" class="form-control select2" asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.ExpeditionMode>()"></select>
                     <span asp-validation-for="expeditionMode" class="text-danger"></span>
                 </div>
             </div>

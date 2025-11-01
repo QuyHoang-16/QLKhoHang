@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace NetCore_Update.Views.Manage
+namespace QuanLyKho.Views.Manage
 {
     public static class ManageNavPages
     {

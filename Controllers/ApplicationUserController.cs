@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using NetCore_Update.Data;
-using NetCore_Update.Services;
-using NetCore_Update.Models;
+using QuanLyKho.Data;
+using QuanLyKho.Services;
+using QuanLyKho.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace NetCore_Update.Controllers
+namespace QuanLyKho.Controllers
 {
-    [Authorize(Roles = NetCore_Update.MVC.Pages.ApplicationUser.Role)]
+    [Authorize(Roles = QuanLyKho.MVC.Pages.ApplicationUser.Role)]
     public class ApplicationUserController : Controller
     {
         private readonly ApplicationDbContext _context;

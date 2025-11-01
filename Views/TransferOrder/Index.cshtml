@@ -1,4 +1,4 @@
-﻿@model IEnumerable<NetCore_Update.Models.Invent.TransferOrder>
+﻿@model IEnumerable<QuanLyKho.Models.Invent.TransferOrder>
 
 @{
     ViewData["Title"] = "Index";
@@ -56,21 +56,21 @@
                     @Html.DisplayFor(modelItem => item.transferOrderNumber)
                 </td>
                 <td>
-                    @if (item.transferOrderStatus == NetCore_Update.Models.Invent.TransferOrderStatus.Completed)
+                    @if (item.transferOrderStatus == QuanLyKho.Models.Invent.TransferOrderStatus.Completed)
                     {
                         <span class="label label-success">
                             @Html.DisplayFor(modelItem => item.transferOrderStatus)
                         </span>
 
                     }
-                    @if (item.transferOrderStatus == NetCore_Update.Models.Invent.TransferOrderStatus.Open)
+                    @if (item.transferOrderStatus == QuanLyKho.Models.Invent.TransferOrderStatus.Open)
                     {
                         <span class="label label-primary">
                             @Html.DisplayFor(modelItem => item.transferOrderStatus)
                         </span>
 
                     }
-                    @if (item.transferOrderStatus == NetCore_Update.Models.Invent.TransferOrderStatus.Draft)
+                    @if (item.transferOrderStatus == QuanLyKho.Models.Invent.TransferOrderStatus.Draft)
                     {
                         <span class="label label-warning">
                             @Html.DisplayFor(modelItem => item.transferOrderStatus)

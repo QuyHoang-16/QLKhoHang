@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NetCore_Update.Data;
-using NetCore_Update.Models.Invent;
-using NetCore_Update.Services;
+using QuanLyKho.Data;
+using QuanLyKho.Models.Invent;
+using QuanLyKho.Services;
 using System.ComponentModel.DataAnnotations;
 
-namespace NetCore_Update.Controllers.Invent
+namespace QuanLyKho.Controllers.Invent
 {
     [Authorize(Roles = "TransferOut")]
     public class TransferOutController : Controller
@@ -323,7 +323,7 @@ namespace NetCore_Update.Controllers.Invent
     }
 }
 
-namespace NetCore_Update.MVC
+namespace QuanLyKho.MVC
 {
     public static partial class Pages
     {
@@ -337,7 +337,7 @@ namespace NetCore_Update.MVC
         }
     }
 }
-namespace NetCore_Update.Models
+namespace QuanLyKho.Models
 {
     public partial class ApplicationUser
     {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace NetCore_Update.Controllers.Invent
+namespace QuanLyKho.Controllers.Invent
 {
     [Authorize(Roles = "Stock")]
     public class StockController : Controller
@@ -14,7 +14,7 @@ namespace NetCore_Update.Controllers.Invent
     }
 }
 
-namespace NetCore_Update.MVC
+namespace QuanLyKho.MVC
 {
     public static partial class Pages
     {
@@ -28,7 +28,7 @@ namespace NetCore_Update.MVC
         }
     }
 }
-namespace NetCore_Update.Models
+namespace QuanLyKho.Models
 {
     public partial class ApplicationUser
     {

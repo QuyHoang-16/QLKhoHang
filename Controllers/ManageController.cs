@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using NetCore_Update.Services;
+using QuanLyKho.Services;
 using System.Text.Encodings.Web;
-using NetCore_Update.Models;
+using QuanLyKho.Models;
 using Microsoft.AspNetCore.Authentication;
-using NetCore_Update.Extensions;
-using NetCore_Update.Models.ManageViewModels;
+using QuanLyKho.Extensions;
+using QuanLyKho.Models.ManageViewModels;
 using System.Text;
 
-namespace NetCore_Update.Controllers
+namespace QuanLyKho.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]

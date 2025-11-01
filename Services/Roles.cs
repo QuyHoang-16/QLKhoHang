@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using NetCore_Update.Models;
+using QuanLyKho.Models;
 
-namespace NetCore_Update.Services
+namespace QuanLyKho.Services
 {
     public class Roles : IRoles
     {

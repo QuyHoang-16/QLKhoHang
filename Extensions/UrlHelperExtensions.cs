@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NetCore_Update.Controllers;
+using QuanLyKho.Controllers;
 
-namespace NetCore_Update.Extensions
+namespace QuanLyKho.Extensions
 {
     public static class UrlHelperExtensions
     {

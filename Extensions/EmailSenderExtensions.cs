@@ -1,7 +1,7 @@
-﻿using NetCore_Update.Services;
+﻿using QuanLyKho.Services;
 using System.Text.Encodings.Web;
 
-namespace NetCore_Update.Extensions
+namespace QuanLyKho.Extensions
 {
     public static class EmailSenderExtensions
     {
