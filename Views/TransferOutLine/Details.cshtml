@@ -1,0 +1,71 @@
+﻿@model NetCore_Update.Models.Invent.TransferOutLine
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Số lượng xuất
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.qty)
+                        </dd>
+
+                        <dt>
+                            Tồn kho
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.qtyInventory)
+                        </dd>
+
+                        <dt>
+                            Ngày tạo
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.createdAt)
+                        </dd>
+
+                        <dt>
+                            Sản phẩm
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.product.productId)
+                        </dd>
+
+                        <dt>
+                            Mã phiếu xuất điều chuyển
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.transferOut.transferOutId)
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.transferOutLineId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+

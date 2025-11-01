@@ -1,0 +1,170 @@
+﻿@model NetCore_Update.Models.Invent.SalesOrder
+
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
+    ViewData["EntityIcon"] = "fa fa-cart-plus";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="salesOrderId" />
+        <input type="hidden" asp-for="salesOrderNumber" />
+        <input type="hidden" asp-for="salesOrderStatus" />
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Số đơn bán hàng</label>
+                    <input asp-for="salesOrderNumber" class="form-control" disabled />
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Điều khoản thanh toán</label>
+                    <select asp-for="top" class="form-control select2"
+                            asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.TOP>()"></select>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Chi nhánh</label>
+                    <select asp-for="branchId" class="form-control select2" asp-items="ViewBag.branchId"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Ngày đơn hàng</label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input asp-for="soDate"
+                               value="@Model.soDate.ToString("dd/MM/yyyy")"
+                               class="form-control pull-right datepicker"
+                               type="text" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Ngày giao dự kiến</label>
+                    <div class="input-group date">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input asp-for="deliveryDate"
+                               value="@Model.deliveryDate.ToString("dd/MM/yyyy")"
+                               class="form-control pull-right datepicker"
+                               type="text" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Khách hàng</label>
+                    <select asp-for="customerId" class="form-control select2" asp-items="ViewBag.customerId"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Trạng thái đơn hàng</label>
+                    <select asp-for="salesOrderStatus"
+                            class="form-control select2"
+                            asp-items="Html.GetEnumSelectList<NetCore_Update.Models.Invent.SalesOrderStatus>()"
+                            disabled></select>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <input asp-for="description" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Địa chỉ giao hàng</label>
+            <input asp-for="deliveryAddress" class="form-control" />
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Số tham chiếu nội bộ</label>
+                    <input asp-for="referenceNumberInternal" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Số tham chiếu khách hàng / PO khách hàng</label>
+                    <input asp-for="referenceNumberExternal" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Người phụ trách (Nội bộ)</label>
+                    <input asp-for="picInternal" class="form-control" />
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Người phụ trách (Khách hàng)</label>
+                    <input asp-for="picCustomer" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group hidden">
+            <label>Tổng giảm giá</label>
+            <input asp-for="totalDiscountAmount" class="form-control" />
+        </div>
+
+        <div class="form-group hidden">
+            <label>Tổng đơn hàng</label>
+            <input asp-for="totalOrderAmount" class="form-control" />
+        </div>
+
+        <div class="form-group hidden">
+            <label>Số phiếu giao hàng</label>
+            <input asp-for="salesShipmentNumber" class="form-control" />
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

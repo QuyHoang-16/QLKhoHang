@@ -1,0 +1,60 @@
+﻿@model NetCore_Update.Models.Invent.Warehouse
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+    ViewData["EntityIcon"] = "fa fa-cubes";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>Chi nhánh</dt>
+                        <dd>@Html.DisplayFor(model => model.branch.branchName)</dd>
+
+                        <dt>Tên kho</dt>
+                        <dd>@Html.DisplayFor(model => model.warehouseName)</dd>
+
+                        <dt>Mô tả</dt>
+                        <dd>@Html.DisplayFor(model => model.description)</dd>
+
+                        <dt>Địa chỉ 1</dt>
+                        <dd>@Html.DisplayFor(model => model.street1)</dd>
+
+                        <dt>Địa chỉ 2</dt>
+                        <dd>@Html.DisplayFor(model => model.street2)</dd>
+
+                        <dt>Thành phố</dt>
+                        <dd>@Html.DisplayFor(model => model.city)</dd>
+
+                        <dt>Tỉnh/Quận</dt>
+                        <dd>@Html.DisplayFor(model => model.province)</dd>
+
+                        <dt>Quốc gia</dt>
+                        <dd>@Html.DisplayFor(model => model.country)</dd>
+
+                        <dt>Ngày tạo</dt>
+                        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.warehouseId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back To List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+

@@ -1,0 +1,51 @@
+﻿@model NetCore_Update.Models.Invent.TransferOrder
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-recycle";
+    ViewData["DeleteInfo"] = "[Completed] Transfer Order (TO) can not be deleted. Rollback status to [Open] by deleting related Goods Issue and Goods Receive";
+    ViewData["IsCanDeleted"] = false;
+    if (Model.transferOrderStatus != NetCore_Update.Models.Invent.TransferOrderStatus.Completed
+        && Model.isIssued == false
+        && Model.isReceived == false)
+    {
+        ViewData["IsCanDeleted"] = true;
+    }
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>Mã phiếu điều chuyển</dt>
+        <dd>@Html.DisplayFor(model => model.transferOrderNumber)</dd>
+
+        <dt>Ngày lập phiếu</dt>
+        <dd>@Html.DisplayFor(model => model.transferOrderDate)</dd>
+
+        <dt>Mô tả</dt>
+        <dd>@Html.DisplayFor(model => model.description)</dd>
+
+        <dt>Người phụ trách</dt>
+        <dd>@Html.DisplayFor(model => model.picName)</dd>
+
+        <dt>Chi nhánh chuyển</dt>
+        <dd>@Html.DisplayFor(model => model.branchFrom.branchName)</dd>
+
+        <dt>Kho chuyển</dt>
+        <dd>@Html.DisplayFor(model => model.warehouseFrom.warehouseName)</dd>
+
+        <dt>Chi nhánh nhận</dt>
+        <dd>@Html.DisplayFor(model => model.branchTo.branchName)</dd>
+
+        <dt>Kho nhận</dt>
+        <dd>@Html.DisplayFor(model => model.warehouseTo.warehouseName)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+    </dl>
+
+
+</div>

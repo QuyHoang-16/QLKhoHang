@@ -1,0 +1,59 @@
+﻿@model NetCore_Update.Models.Invent.ReceivingLine
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                        <dl class="dl-horizontal">
+                            <dt>Số lượng đặt</dt>
+                            <dd>@Html.DisplayFor(model => model.qty)</dd>
+
+                            <dt>Số lượng nhận</dt>
+                            <dd>@Html.DisplayFor(model => model.qtyReceive)</dd>
+
+                            <dt>Tồn kho sau nhập</dt>
+                            <dd>@Html.DisplayFor(model => model.qtyInventory)</dd>
+
+                            <dt>Ngày tạo</dt>
+                            <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+
+                            <dt>Chi nhánh</dt>
+                            <dd>@Html.DisplayFor(model => model.branch.branchName)</dd>
+
+                            <dt>Sản phẩm</dt>
+                            <dd>@Html.DisplayFor(model => model.product.productName)</dd>
+
+                            <dt>Phiếu nhập</dt>
+                            <dd>@Html.DisplayFor(model => model.receiving.receivingNumber)</dd>
+
+                            <dt>Kho</dt>
+                            <dd>@Html.DisplayFor(model => model.warehouse.warehouseName)</dd>
+                        </dl>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.receivingLineId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+

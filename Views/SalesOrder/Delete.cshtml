@@ -1,0 +1,74 @@
+﻿@model NetCore_Update.Models.Invent.SalesOrder
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-cart-plus";
+    ViewData["DeleteInfo"] = "[Completed] Sales Order (SO) can not be deleted. Rollback status to [Open] by deleting related Delivery Order (Shipment)";
+    ViewData["IsCanDeleted"] = false;
+    if (Model.salesOrderStatus != NetCore_Update.Models.Invent.SalesOrderStatus.Completed)
+    {
+        ViewData["IsCanDeleted"] = true;
+    }
+
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>Số đơn bán hàng</dt>
+        <dd>@Html.DisplayFor(model => model.salesOrderNumber)</dd>
+
+        <dt>Điều khoản thanh toán</dt>
+        <dd>@Html.DisplayFor(model => model.top)</dd>
+
+        <dt>Ngày đặt hàng</dt>
+        <dd>@Html.DisplayFor(model => model.soDate)</dd>
+
+        <dt>Ngày giao dự kiến</dt>
+        <dd>@Html.DisplayFor(model => model.deliveryDate)</dd>
+
+        <dt>Địa chỉ giao hàng</dt>
+        <dd>@Html.DisplayFor(model => model.deliveryAddress)</dd>
+
+        <dt>Số tham chiếu nội bộ</dt>
+        <dd>@Html.DisplayFor(model => model.referenceNumberInternal)</dd>
+
+        <dt>Số tham chiếu khách hàng</dt>
+        <dd>@Html.DisplayFor(model => model.referenceNumberExternal)</dd>
+
+        <dt>Ghi chú</dt>
+        <dd>@Html.DisplayFor(model => model.description)</dd>
+
+        <dt>Chi nhánh</dt>
+        <dd>@Html.DisplayFor(model => model.branch.branchName)</dd>
+
+        <dt>Người phụ trách (Nội bộ)</dt>
+        <dd>@Html.DisplayFor(model => model.picInternal)</dd>
+
+        <dt>Người phụ trách (Khách hàng)</dt>
+        <dd>@Html.DisplayFor(model => model.picCustomer)</dd>
+
+        <dt>Trạng thái đơn hàng</dt>
+        <dd>@Html.DisplayFor(model => model.salesOrderStatus)</dd>
+
+        <dt>Tổng giảm giá</dt>
+        <dd>@Html.DisplayFor(model => model.totalDiscountAmount)</dd>
+
+        <dt>Tổng tiền đơn hàng</dt>
+        <dd>@Html.DisplayFor(model => model.totalOrderAmount)</dd>
+
+        <dt>Số phiếu giao hàng</dt>
+        <dd>@Html.DisplayFor(model => model.salesShipmentNumber)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+
+        <dt>Khách hàng</dt>
+        <dd>@Html.DisplayFor(model => model.customer.customerName)</dd>
+    </dl>
+
+
+</div>

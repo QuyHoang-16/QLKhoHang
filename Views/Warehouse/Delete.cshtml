@@ -1,0 +1,52 @@
+﻿@model NetCore_Update.Models.Invent.Warehouse
+@inject NetCore_Update.Data.ApplicationDbContext _context;
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-cubes";
+    ViewData["DeleteInfo"] = "Warehouse that already have transactions (Receiving, Shipment, Transfer Order) can not be deleted.";
+    NetCore_Update.Models.Invent.Receiving receiving = _context.Receivings.Where(x => x.warehouseId.Equals(Model.warehouseId)).FirstOrDefault();
+    NetCore_Update.Models.Invent.Shipment shipment = _context.Shipments.Where(x => x.warehouseId.Equals(Model.warehouseId)).FirstOrDefault();
+    NetCore_Update.Models.Invent.TransferOrder to = _context.TransferOrders.Where(x => x.warehouseIdFrom.Equals(Model.warehouseId) || x.warehouseIdTo.Equals(Model.warehouseId)).FirstOrDefault();
+    ViewData["IsCanDeleted"] = false;
+    if (receiving == null && shipment == null && to == null)
+    {
+        ViewData["IsCanDeleted"] = true;
+    }
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>Chi nhánh</dt>
+        <dd>@Html.DisplayFor(model => model.branch.branchName)</dd>
+
+        <dt>Tên kho</dt>
+        <dd>@Html.DisplayFor(model => model.warehouseName)</dd>
+
+        <dt>Mô tả</dt>
+        <dd>@Html.DisplayFor(model => model.description)</dd>
+
+        <dt>Địa chỉ 1</dt>
+        <dd>@Html.DisplayFor(model => model.street1)</dd>
+
+        <dt>Địa chỉ 2</dt>
+        <dd>@Html.DisplayFor(model => model.street2)</dd>
+
+        <dt>Thành phố</dt>
+        <dd>@Html.DisplayFor(model => model.city)</dd>
+
+        <dt>Tỉnh/Quận</dt>
+        <dd>@Html.DisplayFor(model => model.province)</dd>
+
+        <dt>Quốc gia</dt>
+        <dd>@Html.DisplayFor(model => model.country)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+    </dl>
+
+</div>

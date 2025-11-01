@@ -1,0 +1,50 @@
+﻿@model NetCore_Update.Models.Invent.Customer
+@inject NetCore_Update.Data.ApplicationDbContext _context;
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-bank";
+    ViewData["DeleteInfo"] = "Customer that already have transactions (SO) can not be deleted.";
+    NetCore_Update.Models.Invent.SalesOrder salesOrder = _context.SalesOrders.Where(x => x.customerId.Equals(Model.customerId)).FirstOrDefault();
+    ViewData["IsCanDeleted"] = false;
+    if (salesOrder == null)
+    {
+        ViewData["IsCanDeleted"] = true;
+    }
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>Tên khách hàng</dt>
+        <dd>@Html.DisplayFor(model => model.customerName)</dd>
+
+        <dt>Mô tả / Ghi chú</dt>
+        <dd>@Html.DisplayFor(model => model.description)</dd>
+
+        <dt>Quy mô doanh nghiệp</dt>
+        <dd>@Html.DisplayFor(model => model.size)</dd>
+
+        <dt>Địa chỉ 1</dt>
+        <dd>@Html.DisplayFor(model => model.street1)</dd>
+
+        <dt>Địa chỉ 2</dt>
+        <dd>@Html.DisplayFor(model => model.street2)</dd>
+
+        <dt>Thành phố</dt>
+        <dd>@Html.DisplayFor(model => model.city)</dd>
+
+        <dt>Tỉnh / Quận</dt>
+        <dd>@Html.DisplayFor(model => model.province)</dd>
+
+        <dt>Quốc gia</dt>
+        <dd>@Html.DisplayFor(model => model.country)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+    </dl>
+
+</div>

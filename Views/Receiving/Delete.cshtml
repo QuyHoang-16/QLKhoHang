@@ -1,0 +1,43 @@
+﻿@model NetCore_Update.Models.Invent.Receiving
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-truck";
+    ViewData["DeleteInfo"] = "Delete Purchase Receive (Receiving) will roll back related PO status to [Open]";
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+    <dl class="dl-horizontal">
+
+        <dt>Mã phiếu nhập</dt>
+        <dd>@Html.DisplayFor(model => model.receivingNumber)</dd>
+
+        <dt>Ngày nhập kho</dt>
+        <dd>@Html.DisplayFor(model => model.receivingDate)</dd>
+
+        <dt>Số phiếu giao hàng (NCC)</dt>
+        <dd>@Html.DisplayFor(model => model.vendorDO)</dd>
+
+        <dt>Số hóa đơn từ NCC</dt>
+        <dd>@Html.DisplayFor(model => model.vendorInvoice)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+
+        <dt>Chi nhánh</dt>
+        <dd>@Html.DisplayFor(model => model.branch.branchName)</dd>
+
+        <dt>Đơn mua hàng (PO)</dt>
+        <dd>@Html.DisplayFor(model => model.purchaseOrder.purchaseOrderNumber)</dd>
+
+        <dt>Nhà cung cấp</dt>
+        <dd>@Html.DisplayFor(model => model.vendor.vendorName)</dd>
+
+        <dt>Kho nhập</dt>
+        <dd>@Html.DisplayFor(model => model.warehouse.warehouseName)</dd>
+
+    </dl>
+</div>

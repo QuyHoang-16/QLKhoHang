@@ -1,0 +1,42 @@
+﻿@model NetCore_Update.Models.Invent.TransferOrderLine
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Số lượng
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.qty)
+        </dd>
+
+        <dt>
+            Ngày tạo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            Sản phẩm
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.product.productId)
+        </dd>
+
+        <dt>
+            Mã phiếu điều chuyển
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.transferOrder.transferOrderId)
+        </dd>
+    </dl>
+    
+</div>

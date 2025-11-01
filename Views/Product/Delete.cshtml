@@ -1,0 +1,46 @@
+﻿@model NetCore_Update.Models.Invent.Product
+@inject NetCore_Update.Data.ApplicationDbContext _context;
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-tags";
+    ViewData["DeleteInfo"] = "Product that already have transactions (PO, SO, Transfer Order) can not be deleted.";
+    NetCore_Update.Models.Invent.PurchaseOrderLine poline = _context.PurchaseOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
+    NetCore_Update.Models.Invent.SalesOrderLine soline = _context.SalesOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
+    NetCore_Update.Models.Invent.TransferOrderLine toline = _context.TransferOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
+    ViewData["IsCanDeleted"] = false;
+    if (poline == null && soline == null && toline == null)
+    {
+        ViewData["IsCanDeleted"] = true;
+    }
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+    <dl class="dl-horizontal">
+        <dt>Mã sản phẩm</dt>
+        <dd>@Html.DisplayFor(model => model.productCode)</dd>
+
+        <dt>Tên sản phẩm</dt>
+        <dd>@Html.DisplayFor(model => model.productName)</dd>
+
+        <dt>Mô tả</dt>
+        <dd>@Html.DisplayFor(model => model.description)</dd>
+
+        <dt>Mã vạch (Barcode)</dt>
+        <dd>@Html.DisplayFor(model => model.barcode)</dd>
+
+        <dt>Số serial</dt>
+        <dd>@Html.DisplayFor(model => model.serialNumber)</dd>
+
+        <dt>Loại sản phẩm</dt>
+        <dd>@Html.DisplayFor(model => model.productType)</dd>
+
+        <dt>Đơn vị tính</dt>
+        <dd>@Html.DisplayFor(model => model.uom)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+    </dl>
+</div>

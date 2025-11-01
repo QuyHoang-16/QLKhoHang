@@ -1,0 +1,55 @@
+﻿@model NetCore_Update.Models.Invent.CustomerLine
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>Chức vụ</dt>
+        <dd>@Html.DisplayFor(model => model.jobTitle)</dd>
+
+        <dt>Tên</dt>
+        <dd>@Html.DisplayFor(model => model.firstName)</dd>
+
+        <dt>Họ</dt>
+        <dd>@Html.DisplayFor(model => model.lastName)</dd>
+
+        <dt>Tên đệm</dt>
+        <dd>@Html.DisplayFor(model => model.middleName)</dd>
+
+        <dt>Tên gọi khác</dt>
+        <dd>@Html.DisplayFor(model => model.nickName)</dd>
+
+        <dt>Giới tính</dt>
+        <dd>@Html.DisplayFor(model => model.gender)</dd>
+
+        <dt>Xưng hô</dt>
+        <dd>@Html.DisplayFor(model => model.salutation)</dd>
+
+        <dt>Điện thoại di động</dt>
+        <dd>@Html.DisplayFor(model => model.mobilePhone)</dd>
+
+        <dt>Điện thoại văn phòng</dt>
+        <dd>@Html.DisplayFor(model => model.officePhone)</dd>
+
+        <dt>Fax</dt>
+        <dd>@Html.DisplayFor(model => model.fax)</dd>
+
+        <dt>Email cá nhân</dt>
+        <dd>@Html.DisplayFor(model => model.personalEmail)</dd>
+
+        <dt>Email công ty</dt>
+        <dd>@Html.DisplayFor(model => model.workEmail)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+
+        <dt>Khách hàng</dt>
+        <dd>@Html.DisplayFor(model => model.customer.customerName)</dd>
+    </dl>
+</div>

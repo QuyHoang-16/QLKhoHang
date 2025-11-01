@@ -1,0 +1,44 @@
+﻿@model NetCore_Update.Models.Invent.TransferIn
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-download";
+    ViewData["DeleteInfo"] = "Deleting goods receive will rollback the status of transfer order into [Open]. After this process, should be followed by deletion of goods issue.";
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>Số phiếu nhập điều chuyển</dt>
+        <dd>@Html.DisplayFor(model => model.transferInNumber)</dd>
+
+        <dt>Ngày nhập kho</dt>
+        <dd>@Html.DisplayFor(model => model.transferInDate)</dd>
+
+        <dt>Mô tả / Ghi chú</dt>
+        <dd>@Html.DisplayFor(model => model.description)</dd>
+
+        <dt>Chi nhánh xuất</dt>
+        <dd>@Html.DisplayFor(model => model.branchFrom.branchName)</dd>
+
+        <dt>Kho xuất</dt>
+        <dd>@Html.DisplayFor(model => model.warehouseFrom.warehouseName)</dd>
+
+        <dt>Chi nhánh nhận</dt>
+        <dd>@Html.DisplayFor(model => model.branchTo.branchName)</dd>
+
+        <dt>Kho nhận</dt>
+        <dd>@Html.DisplayFor(model => model.warehouseTo.warehouseName)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+
+        <dt>Số lệnh điều chuyển</dt>
+        <dd>@Html.DisplayFor(model => model.transferOrder.transferOrderNumber)</dd>
+    </dl>
+
+
+</div>

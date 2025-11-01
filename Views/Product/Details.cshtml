@@ -1,0 +1,60 @@
+﻿@model NetCore_Update.Models.Invent.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+    ViewData["EntityIcon"] = "fa fa-tags";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>Mã sản phẩm</dt>
+                        <dd>@Html.DisplayFor(model => model.productCode)</dd>
+
+                        <dt>Tên sản phẩm</dt>
+                        <dd>@Html.DisplayFor(model => model.productName)</dd>
+
+                        <dt>Mô tả</dt>
+                        <dd>@Html.DisplayFor(model => model.description)</dd>
+
+                        <dt>Mã vạch (Barcode)</dt>
+                        <dd>@Html.DisplayFor(model => model.barcode)</dd>
+
+                        <dt>Số serial</dt>
+                        <dd>@Html.DisplayFor(model => model.serialNumber)</dd>
+
+                        <dt>Loại sản phẩm</dt>
+                        <dd>@Html.DisplayFor(model => model.productType)</dd>
+
+                        <dt>Đơn vị tính</dt>
+                        <dd>@Html.DisplayFor(model => model.uom)</dd>
+
+                        <dt>Ngày tạo</dt>
+                        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+                    </dl>
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.productId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+

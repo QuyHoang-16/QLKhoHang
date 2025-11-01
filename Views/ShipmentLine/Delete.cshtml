@@ -1,0 +1,71 @@
+﻿@model NetCore_Update.Models.Invent.ShipmentLine
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>
+            Số lượng yêu cầu
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.qty)
+        </dd>
+
+        <dt>
+            Số lượng giao
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.qtyShipment)
+        </dd>
+
+        <dt>
+            Số lượng tồn kho
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.qtyInventory)
+        </dd>
+
+        <dt>
+            Ngày tạo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            Chi nhánh
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.branch.branchId)
+        </dd>
+
+        <dt>
+            Sản phẩm
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.product.productId)
+        </dd>
+
+        <dt>
+            Mã phiếu giao hàng
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.shipment.shipmentId)
+        </dd>
+
+        <dt>
+            Kho
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.warehouse.warehouseId)
+        </dd>
+    </dl>
+
+    
+</div>

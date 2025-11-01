@@ -1,0 +1,50 @@
+﻿@model NetCore_Update.Models.Invent.Shipment
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+    ViewData["EntityIcon"] = "fa fa-plane";
+    ViewData["DeleteInfo"] = "Delete Delivery order (shipment) will roll back related SO status to [Open]";
+}
+
+
+@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>Mã phiếu giao hàng</dt>
+        <dd>@Html.DisplayFor(model => model.shipmentNumber)</dd>
+
+        <dt>Ngày giao hàng</dt>
+        <dd>@Html.DisplayFor(model => model.shipmentDate)</dd>
+
+        <dt>Số PO khách hàng</dt>
+        <dd>@Html.DisplayFor(model => model.customerPO)</dd>
+
+        <dt>Số hóa đơn</dt>
+        <dd>@Html.DisplayFor(model => model.invoice)</dd>
+
+        <dt>Loại vận chuyển</dt>
+        <dd>@Html.DisplayFor(model => model.expeditionType)</dd>
+
+        <dt>Hình thức vận chuyển</dt>
+        <dd>@Html.DisplayFor(model => model.expeditionMode)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+
+        <dt>Chi nhánh</dt>
+        <dd>@Html.DisplayFor(model => model.branch.branchName)</dd>
+
+        <dt>Khách hàng</dt>
+        <dd>@Html.DisplayFor(model => model.customer.customerName)</dd>
+
+        <dt>Đơn hàng bán</dt>
+        <dd>@Html.DisplayFor(model => model.salesOrder.salesOrderNumber)</dd>
+
+        <dt>Kho xuất hàng</dt>
+        <dd>@Html.DisplayFor(model => model.warehouse.warehouseName)</dd>
+    </dl>
+
+
+</div>

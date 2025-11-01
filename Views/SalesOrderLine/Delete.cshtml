@@ -1,0 +1,55 @@
+﻿@model NetCore_Update.Models.Invent.SalesOrderLine
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            Số lượng
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.qty)
+        </dd>
+
+        <dt>
+            Đơn giá
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            Giảm giá
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.discountAmount)
+        </dd>
+
+        <dt>
+            Thành tiền
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.totalAmount)
+        </dd>
+
+        <dt>
+            Ngày tạo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            Sản phẩm
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.product.productId)
+        </dd>
+
+        <dt>
+            Đơn bán hàng

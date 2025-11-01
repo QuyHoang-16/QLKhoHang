@@ -1,0 +1,38 @@
+﻿@model NetCore_Update.Models.Invent.ReceivingLine
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
+}
+
+
+
+<div>
+    
+    <dl class="dl-horizontal">
+        <dt>Số lượng đặt</dt>
+        <dd>@Html.DisplayFor(model => model.qty)</dd>
+
+        <dt>Số lượng nhận</dt>
+        <dd>@Html.DisplayFor(model => model.qtyReceive)</dd>
+
+        <dt>Tồn kho sau nhập</dt>
+        <dd>@Html.DisplayFor(model => model.qtyInventory)</dd>
+
+        <dt>Ngày tạo</dt>
+        <dd>@Html.DisplayFor(model => model.createdAt)</dd>
+
+        <dt>Chi nhánh</dt>
+        <dd>@Html.DisplayFor(model => model.branch.branchName)</dd>
+
+        <dt>Sản phẩm</dt>
+        <dd>@Html.DisplayFor(model => model.product.productName)</dd>
+
+        <dt>Phiếu nhập</dt>
+        <dd>@Html.DisplayFor(model => model.receiving.receivingNumber)</dd>
+
+        <dt>Kho</dt>
+        <dd>@Html.DisplayFor(model => model.warehouse.warehouseName)</dd>
+    </dl>
+    
+</div>

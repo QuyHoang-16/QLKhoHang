@@ -1,0 +1,92 @@
+﻿@model NetCore_Update.Models.Invent.ShipmentLine
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-9">
+        <!-- Default box -->
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            Số lượng yêu cầu
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.qty)
+                        </dd>
+
+                        <dt>
+                            Số lượng giao
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.qtyShipment)
+                        </dd>
+
+                        <dt>
+                            Số lượng tồn kho
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.qtyInventory)
+                        </dd>
+
+                        <dt>
+                            Ngày tạo
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.createdAt)
+                        </dd>
+
+                        <dt>
+                            Chi nhánh
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.branch.branchId)
+                        </dd>
+
+                        <dt>
+                            Sản phẩm
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.product.productId)
+                        </dd>
+
+                        <dt>
+                            Mã phiếu giao hàng
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.shipment.shipmentId)
+                        </dd>
+
+                        <dt>
+                            Kho
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.warehouse.warehouseId)
+                        </dd>
+                    </dl>
+
+                </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.shipmentLineId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+            <!-- /.box-footer-->
+        </div>
+        <!-- /.box -->
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+
+
+

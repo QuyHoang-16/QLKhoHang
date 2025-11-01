@@ -1,0 +1,57 @@
+﻿@model NetCore_Update.Models.Invent.Branch
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
+    ViewData["EntityIcon"] = "fa fa-building-o";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div>
+                    <dl class="dl-horizontal">
+
+                        <dt>Tên Chi Nhánh</dt>
+                        <dd>@Html.DisplayFor(m => m.branchName)</dd>
+
+                        <dt>Mô Tả Chi Nhánh</dt>
+                        <dd>@Html.DisplayFor(m => m.description)</dd>
+
+                        <dt>Là Chi Nhánh Mặc Định?</dt>
+                        <dd>@Html.DisplayFor(m => m.isDefaultBranch)</dd>
+
+                        <dt>Địa Chỉ 1</dt>
+                        <dd>@Html.DisplayFor(m => m.street1)</dd>
+
+                        <dt>Địa Chỉ 2</dt>
+                        <dd>@Html.DisplayFor(m => m.street2)</dd>
+
+                        <dt>Thành Phố</dt>
+                        <dd>@Html.DisplayFor(m => m.city)</dd>
+
+                        <dt>Tỉnh/Quận/Huyện</dt>
+                        <dd>@Html.DisplayFor(m => m.province)</dd>
+
+                        <dt>Quốc Gia</dt>
+                        <dd>@Html.DisplayFor(m => m.country)</dd>
+
+                        <dt>Ngày Tạo</dt>
+                        <dd>@Html.DisplayFor(m => m.createdAt)</dd>
+
+                    </dl>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <div class="form-group">
+                    <a asp-action="Edit" asp-route-id="@Model.branchId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
