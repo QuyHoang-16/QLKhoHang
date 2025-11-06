@@ -47,6 +47,13 @@ namespace QuanLyKho.Controllers.Invent
         // GET: Warehouse/Create
         public IActionResult Create()
         {
+            if (!_context.Branches.Any())
+            {
+                ViewData["branchId"] = new SelectList(Enumerable.Empty<Branch>(), "branchId", "branchName");
+                ViewData["StatusMessage"] = "Chưa có Chi nhánh. Hãy tạo Chi nhánh trước khi tạo Kho.";
+                return View();
+            }
+
             var defaultBranch = _context.Branches.FirstOrDefault(x => x.isDefaultBranch == true);
             ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName", defaultBranch != null ? defaultBranch.branchId : null);
             return View();
@@ -59,11 +66,35 @@ namespace QuanLyKho.Controllers.Invent
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("branchId,warehouseId,warehouseName,description,street1,street2,city,province,country,createdAt")] Warehouse warehouse)
         {
+            var branchExists = _context.Branches.Any(b => b.branchId == warehouse.branchId);
+            if (!branchExists)
+            {
+                ModelState.AddModelError("branchId", "Chi nhánh không tồn tại hoặc đã bị xóa.");
+            }
+
+            if (branchExists && ModelState.ContainsKey(nameof(warehouse.branchId)))
+            {
+                ModelState[nameof(warehouse.branchId)].Errors.Clear();
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Add(warehouse);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Add(warehouse);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateException)
+                {
+                    ModelState.AddModelError(string.Empty, "Không thể tạo kho. Vui lòng kiểm tra dữ liệu và thử lại.");
+                }
+            }
+            
+            var allErrors = string.Join(" | ", ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage));
+            if (!string.IsNullOrWhiteSpace(allErrors))
+            {
+                ViewData["StatusMessage"] = allErrors;
             }
             ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName", warehouse.branchId);
             return View(warehouse);

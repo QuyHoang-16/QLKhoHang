@@ -17,7 +17,7 @@ namespace QuanLyKho.Data
             try
             {
                 // Ensure database is created
-                context.Database.EnsureCreated();
+                // context.Database.EnsureCreated();
 
                 // Run pending migrations
                 if (context.Database.GetPendingMigrations().Any())

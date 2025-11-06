@@ -29,10 +29,11 @@ namespace QuanLyKho.Models.Invent
 
         [StringLength(38)]
         [Display(Name = "Branch Id")]
+        [Required]
         public string branchId { get; set; }
         
         [Display(Name = "Branch")]
-        public Branch branch { get; set; }
+        public Branch? branch { get; set; }
 
         //IBaseAddress
         [Display(Name = "Street Address 1")]
