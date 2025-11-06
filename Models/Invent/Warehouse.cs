@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public Warehouse()
         {
             this.createdAt = DateTime.UtcNow;
+            this.warehouseId = Guid.NewGuid().ToString();
         }
 
         [StringLength(38)]
