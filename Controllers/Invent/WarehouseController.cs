@@ -47,7 +47,8 @@ namespace QuanLyKho.Controllers.Invent
         // GET: Warehouse/Create
         public IActionResult Create()
         {
-            ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName");
+            var defaultBranch = _context.Branches.FirstOrDefault(x => x.isDefaultBranch == true);
+            ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName", defaultBranch != null ? defaultBranch.branchId : null);
             return View();
         }
 
@@ -64,6 +65,7 @@ namespace QuanLyKho.Controllers.Invent
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName", warehouse.branchId);
             return View(warehouse);
         }
 
