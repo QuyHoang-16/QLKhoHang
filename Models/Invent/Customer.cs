@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public Customer()
         {
             this.createdAt = DateTime.UtcNow;
+            this.customerId = Guid.NewGuid().ToString();
         }
 
         [StringLength(38)]

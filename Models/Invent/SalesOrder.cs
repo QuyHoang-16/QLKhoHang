@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public SalesOrder()
         {
             this.createdAt = DateTime.UtcNow;
+            this.salesOrderId = Guid.NewGuid().ToString();
             this.salesOrderNumber = DateTime.UtcNow.Date.ToString("yyyyMMdd") + Guid.NewGuid().ToString().Substring(0, 5).ToUpper() + "#SO";
             this.soDate = DateTime.UtcNow.Date;
             this.deliveryDate = this.soDate.AddDays(5);

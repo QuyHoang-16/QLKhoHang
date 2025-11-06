@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public TransferOrder()
         {
             this.createdAt = DateTime.UtcNow;
+            this.transferOrderId = Guid.NewGuid().ToString();
             this.transferOrderNumber = DateTime.UtcNow.Date.ToString("yyyyMMdd") + Guid.NewGuid().ToString().Substring(0, 5).ToUpper() + "#TO";
             this.transferOrderDate = DateTime.UtcNow;
             this.transferOrderStatus = TransferOrderStatus.Draft;

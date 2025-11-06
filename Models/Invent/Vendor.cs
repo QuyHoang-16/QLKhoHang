@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public Vendor()
         {
             this.createdAt = DateTime.UtcNow;
+            this.vendorId = Guid.NewGuid().ToString();
         }
 
         [StringLength(38)]

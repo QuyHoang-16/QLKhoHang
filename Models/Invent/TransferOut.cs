@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public TransferOut()
         {
             this.createdAt = DateTime.UtcNow;
+            this.transferOutId = Guid.NewGuid().ToString();
             this.transferOutNumber = DateTime.UtcNow.Date.ToString("yyyyMMdd") + Guid.NewGuid().ToString().Substring(0, 5).ToUpper() + "#OUT";
             this.transferOutDate = DateTime.UtcNow;
         }

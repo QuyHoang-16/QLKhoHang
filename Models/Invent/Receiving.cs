@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public Receiving()
         {
             this.createdAt = DateTime.UtcNow;
+            this.receivingId = Guid.NewGuid().ToString();
             this.receivingNumber = DateTime.UtcNow.Date.ToString("yyyyMMdd") + Guid.NewGuid().ToString().Substring(0, 5).ToUpper() + "#GSRN";
             this.receivingDate = DateTime.UtcNow;
         }

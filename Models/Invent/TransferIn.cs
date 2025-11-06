@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public TransferIn()
         {
             this.createdAt = DateTime.UtcNow;
+            this.transferInId = Guid.NewGuid().ToString();
             this.transferInNumber = DateTime.UtcNow.Date.ToString("yyyyMMdd") + Guid.NewGuid().ToString().Substring(0, 5).ToUpper() + "#IN";
             this.transferInDate = DateTime.UtcNow;
         }

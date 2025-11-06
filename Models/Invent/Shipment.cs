@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public Shipment()
         {
             this.createdAt = DateTime.UtcNow;
+            this.shipmentId = Guid.NewGuid().ToString();
             this.shipmentNumber = DateTime.UtcNow.Date.ToString("yyyyMMdd") + Guid.NewGuid().ToString().Substring(0, 5).ToUpper() + "#DO";
             this.shipmentDate = DateTime.UtcNow;
             this.expeditionType = ExpeditionType.Internal;

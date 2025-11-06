@@ -11,6 +11,7 @@ namespace QuanLyKho.Models.Invent
         public PurchaseOrder()
         {
             this.createdAt = DateTime.UtcNow;
+            this.purchaseOrderId = Guid.NewGuid().ToString();
             this.purchaseOrderNumber = DateTime.UtcNow.Date.ToString("yyyyMMdd") + Guid.NewGuid().ToString().Substring(0, 5).ToUpper() + "#PO";
             this.poDate = DateTime.UtcNow.Date;
             this.deliveryDate = this.poDate.AddDays(5);
