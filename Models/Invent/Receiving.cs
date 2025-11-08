@@ -26,7 +26,7 @@ namespace QuanLyKho.Models.Invent
         public string purchaseOrderId { get; set; }
 
         [Display(Name = "Purchase Order")]
-        public PurchaseOrder purchaseOrder { get; set; }
+        public PurchaseOrder? purchaseOrder { get; set; }
 
         [StringLength(20)]
         [Required]
@@ -42,7 +42,7 @@ namespace QuanLyKho.Models.Invent
         public string vendorId { get; set; }
 
         [Display(Name = "Vendor")]
-        public Vendor vendor { get; set; }
+        public Vendor? vendor { get; set; }
 
         [StringLength(50)]
         [Required]
@@ -58,7 +58,7 @@ namespace QuanLyKho.Models.Invent
         public string branchId { get; set; }
 
         [Display(Name = "Branch")]
-        public Branch branch { get; set; }
+        public Branch? branch { get; set; }
 
         [StringLength(38)]
         [Required]
@@ -66,7 +66,7 @@ namespace QuanLyKho.Models.Invent
         public string warehouseId { get; set; }
 
         [Display(Name = "Warehouse")]
-        public Warehouse warehouse { get; set; }
+        public Warehouse? warehouse { get; set; }
 
         [Display(Name = "Receiving Lines")]
         public List<ReceivingLine> receivingLine { get; set; } = new List<ReceivingLine>();

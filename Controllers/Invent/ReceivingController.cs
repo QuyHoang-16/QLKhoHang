@@ -20,11 +20,25 @@ namespace QuanLyKho.Controllers.Invent
 
         public IActionResult GetWarehouseByOrder(string purchaseOrderId)
         {
-            PurchaseOrder po = _context.PurchaseOrders
-                .Include(x => x.branch)
-                .Where(x => x.purchaseOrderId.Equals(purchaseOrderId)).FirstOrDefault();
+            if (string.IsNullOrWhiteSpace(purchaseOrderId) || purchaseOrderId == "0")
+            {
+                var empty = new List<Warehouse> { new Warehouse { warehouseId = "0", warehouseName = "Select" } };
+                return Json(new SelectList(empty, "warehouseId", "warehouseName"));
+            }
 
-            List<Warehouse> warehouseList = _context.Warehouses.Where(x => x.branchId.Equals(po.branch.branchId)).ToList();
+            var po = _context.PurchaseOrders
+                .Include(x => x.branch)
+                .FirstOrDefault(x => x.purchaseOrderId == purchaseOrderId);
+
+            if (po == null || po.branch == null)
+            {
+                var empty = new List<Warehouse> { new Warehouse { warehouseId = "0", warehouseName = "Select" } };
+                return Json(new SelectList(empty, "warehouseId", "warehouseName"));
+            }
+
+            var warehouseList = _context.Warehouses
+                .Where(x => x.branchId == po.branch.branchId)
+                .ToList();
             warehouseList.Insert(0, new Warehouse { warehouseId = "0", warehouseName = "Select" });
 
             return Json(new SelectList(warehouseList, "warehouseId", "warehouseName"));
@@ -87,7 +101,16 @@ namespace QuanLyKho.Controllers.Invent
         {
             ViewData["StatusMessage"] = TempData["StatusMessage"];
             ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName");
-            List<PurchaseOrder> poList = _context.PurchaseOrders.Where(x => x.purchaseOrderStatus == PurchaseOrderStatus.Open).ToList();
+            // Prefer Open POs; if none, fall back to non-Completed to aid data entry
+            var poList = _context.PurchaseOrders
+                .Where(x => x.purchaseOrderStatus == PurchaseOrderStatus.Open)
+                .ToList();
+            if (!poList.Any())
+            {
+                poList = _context.PurchaseOrders
+                    .Where(x => x.purchaseOrderStatus != PurchaseOrderStatus.Completed)
+                    .ToList();
+            }
             poList.Insert(0, new PurchaseOrder { purchaseOrderId = "0", purchaseOrderNumber = "Select" });
             ViewData["purchaseOrderId"] = new SelectList(poList, "purchaseOrderId", "purchaseOrderNumber");
             ViewData["vendorId"] = new SelectList(_context.Vendors, "vendorId", "vendorName");
@@ -104,7 +127,7 @@ namespace QuanLyKho.Controllers.Invent
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("receivingId,purchaseOrderId,receivingNumber,receivingDate,vendorId,vendorDO,vendorInvoice,branchId,warehouseId,HasChild,createdAt")] Receiving receiving)
+        public async Task<IActionResult> Create([Bind("purchaseOrderId,receivingNumber,receivingDate,vendorId,vendorDO,vendorInvoice,branchId,warehouseId")] Receiving receiving)
         {
             if (receiving.purchaseOrderId == "0" || receiving.warehouseId == "0")
             {
@@ -128,9 +151,10 @@ namespace QuanLyKho.Controllers.Invent
                     return View(receiving);
                 }
                 receiving.warehouse = await _context.Warehouses.Include(x => x.branch).SingleOrDefaultAsync(x => x.warehouseId.Equals(receiving.warehouseId));
-                receiving.branch = receiving.warehouse.branch;
+                receiving.branch = receiving.warehouse?.branch;
+                receiving.branchId = receiving.warehouse?.branchId;
                 receiving.purchaseOrder = await _context.PurchaseOrders.Include(x => x.vendor).SingleOrDefaultAsync(x => x.purchaseOrderId.Equals(receiving.purchaseOrderId));
-                receiving.vendor = receiving.purchaseOrder.vendor;
+                receiving.vendor = receiving.purchaseOrder?.vendor;
 
                 _context.Add(receiving);
 
