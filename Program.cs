@@ -92,6 +92,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Map attribute-routed API controllers
+app.MapControllers();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

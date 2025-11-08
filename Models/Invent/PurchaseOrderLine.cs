@@ -24,14 +24,14 @@ namespace QuanLyKho.Models.Invent
         public string purchaseOrderId { get; set; }
 
         [Display(Name = "Purchase Order")]
-        public PurchaseOrder purchaseOrder { get; set; }
+        public PurchaseOrder? purchaseOrder { get; set; }
 
         [StringLength(38)]
         [Display(Name = "Product Id")]
         public string productId { get; set; }
 
         [Display(Name = "Product")]
-        public Product product { get; set; }
+        public Product? product { get; set; }
 
         [Display(Name = "Qty")]
         public float qty { get; set; }

@@ -18,6 +18,7 @@ namespace QuanLyKho.Models.Invent
             this.purchaseOrderStatus = PurchaseOrderStatus.Draft;
             this.totalDiscountAmount = 0m;
             this.totalOrderAmount = 0m;
+            this.purchaseReceiveNumber = string.Empty;
         }
 
         [StringLength(38)]
@@ -60,7 +61,7 @@ namespace QuanLyKho.Models.Invent
         public string branchId { get; set; }
 
         [Display(Name = "Branch")]
-        public Branch branch { get; set; }
+        public Branch? branch { get; set; }
 
         [StringLength(38)]
         [Required]
@@ -68,7 +69,7 @@ namespace QuanLyKho.Models.Invent
         public string vendorId { get; set; }
 
         [Display(Name = "Vendor")]
-        public Vendor vendor { get; set; }
+        public Vendor? vendor { get; set; }
 
         [StringLength(30)]
         [Required]
@@ -90,7 +91,7 @@ namespace QuanLyKho.Models.Invent
         public decimal totalOrderAmount { get; set; }
 
         [Display(Name = "Purchase Receive Number")]
-        public string purchaseReceiveNumber { get; set; }
+        public string? purchaseReceiveNumber { get; set; }
 
         [Display(Name = "Purchase Order Lines")]
         public List<PurchaseOrderLine> purchaseOrderLine { get; set; } = new List<PurchaseOrderLine>();

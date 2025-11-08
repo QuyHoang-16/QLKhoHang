@@ -95,13 +95,20 @@ namespace QuanLyKho.Controllers.Invent
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("purchaseOrderId,purchaseOrderNumber,top,poDate,deliveryDate,deliveryAddress,referenceNumberInternal,referenceNumberExternal,description,vendorId,branchId,picInternal,picVendor,purchaseOrderStatus,totalDiscountAmount,totalOrderAmount,purchaseReceiveNumber,HasChild,createdAt")] PurchaseOrder purchaseOrder)
+        public async Task<IActionResult> Create([Bind("purchaseOrderNumber,top,poDate,deliveryDate,deliveryAddress,referenceNumberInternal,referenceNumberExternal,description,vendorId,branchId,picInternal,picVendor,purchaseOrderStatus,totalDiscountAmount,totalOrderAmount")] PurchaseOrder purchaseOrder)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(purchaseOrder);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), new { id = purchaseOrder.purchaseOrderId });
+                try
+                {
+                    _context.Add(purchaseOrder);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Details), new { id = purchaseOrder.purchaseOrderId });
+                }
+                catch (DbUpdateException ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Không thể tạo đơn mua hàng: {ex.InnerException?.Message ?? ex.Message}");
+                }
             }
             ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName", purchaseOrder.branchId);
             ViewData["vendorId"] = new SelectList(_context.Vendors, "vendorId", "vendorName", purchaseOrder.vendorId);
