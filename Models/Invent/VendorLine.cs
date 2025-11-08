@@ -27,7 +27,7 @@ namespace QuanLyKho.Models.Invent
         public string vendorId { get; set; }
         
         [Display(Name = "Vendor")]
-        public Vendor vendor { get; set; }
+        public Vendor? vendor { get; set; }
 
         //IBasePerson
         [Display(Name = "First Name")]

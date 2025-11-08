@@ -27,7 +27,7 @@ namespace QuanLyKho.Models.Invent
         public string customerId { get; set; }
 
         [Display(Name = "Customer")]
-        public Customer customer { get; set; }
+        public Customer? customer { get; set; }
 
         //IBasePerson
         [Display(Name = "First Name")]
