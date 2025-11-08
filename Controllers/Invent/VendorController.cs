@@ -56,13 +56,20 @@ namespace QuanLyKho.Controllers.Invent
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("vendorId,vendorName,description,size,street1,street2,city,province,country,HasChild,createdAt")] Vendor vendor)
+        public async Task<IActionResult> Create([Bind("vendorName,description,size,street1,street2,city,province,country")] Vendor vendor)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(vendor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), new { id = vendor.vendorId });
+                try
+                {
+                    _context.Add(vendor);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Details), new { id = vendor.vendorId });
+                }
+                catch (DbUpdateException ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Không thể tạo nhà cung cấp: {ex.Message}");
+                }
             }
             return View(vendor);
         }

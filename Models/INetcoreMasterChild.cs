@@ -8,6 +8,11 @@ namespace QuanLyKho.Models
     public class INetcoreMasterChild : INetcoreBasic
     {
         //never used to store data, just a mark for master detail
-        public string HasChild { get; set; }
+        public string? HasChild { get; set; }
+
+        public INetcoreMasterChild()
+        {
+            this.HasChild = "No";
+        }
     }
 }
