@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using QuanLyKho.Data;
 using QuanLyKho.Models;
 using QuanLyKho.Services;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -86,6 +88,15 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+// Localization: default to Vietnamese (dd/MM/yyyy) with fallback to en-US
+var supportedCultures = new[] { new CultureInfo("vi-VN"), new CultureInfo("en-US") };
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("vi-VN"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+});
 
 app.UseRouting();
 

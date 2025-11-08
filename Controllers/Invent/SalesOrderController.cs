@@ -93,13 +93,24 @@ namespace QuanLyKho.Controllers.Invent
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("salesOrderId,salesOrderNumber,top,soDate,deliveryDate,deliveryAddress,referenceNumberInternal,referenceNumberExternal,description,customerId,branchId,picInternal,picCustomer,salesOrderStatus,totalDiscountAmount,totalOrderAmount,salesShipmentNumber,HasChild,createdAt")] SalesOrder salesOrder)
+        public async Task<IActionResult> Create([Bind("salesOrderNumber,top,soDate,deliveryDate,deliveryAddress,referenceNumberInternal,referenceNumberExternal,description,customerId,branchId,picInternal,picCustomer,salesOrderStatus,totalDiscountAmount,totalOrderAmount")] SalesOrder salesOrder)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(salesOrder);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), new { id = salesOrder.salesOrderId });
+                try
+                {
+                    if (string.IsNullOrEmpty(salesOrder.salesShipmentNumber))
+                    {
+                        salesOrder.salesShipmentNumber = string.Empty;
+                    }
+                    _context.Add(salesOrder);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Details), new { id = salesOrder.salesOrderId });
+                }
+                catch (DbUpdateException ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Không thể tạo đơn bán hàng: {ex.InnerException?.Message ?? ex.Message}");
+                }
             }
             ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName", salesOrder.branchId);
             ViewData["customerId"] = new SelectList(_context.Customers, "customerId", "customerName", salesOrder.customerId);

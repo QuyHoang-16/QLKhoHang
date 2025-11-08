@@ -18,6 +18,7 @@ namespace QuanLyKho.Models.Invent
             this.salesOrderStatus = SalesOrderStatus.Draft;
             this.totalDiscountAmount = 0m;
             this.totalOrderAmount = 0m;
+            this.salesShipmentNumber = string.Empty;
         }
 
         [StringLength(38)]
@@ -60,7 +61,7 @@ namespace QuanLyKho.Models.Invent
         public string branchId { get; set; }
 
         [Display(Name = "Branch")]
-        public Branch branch { get; set; }
+        public Branch? branch { get; set; }
 
         [StringLength(38)]
         [Required]
@@ -68,7 +69,7 @@ namespace QuanLyKho.Models.Invent
         public string customerId { get; set; }
 
         [Display(Name = "Customer")]
-        public Customer customer { get; set; }
+        public Customer? customer { get; set; }
 
         [StringLength(30)]
         [Required]
@@ -90,7 +91,7 @@ namespace QuanLyKho.Models.Invent
         public decimal totalOrderAmount { get; set; }
 
         [Display(Name = "Sales Shipment Number")]
-        public string salesShipmentNumber { get; set; }
+        public string? salesShipmentNumber { get; set; }
 
         [Display(Name = "Sales Order Lines")]
         public List<SalesOrderLine> salesOrderLine { get; set; } = new List<SalesOrderLine>();
