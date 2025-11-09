@@ -77,7 +77,13 @@ namespace QuanLyKho.Controllers.Invent
         // GET: TransferIn/Create
         public IActionResult Create()
         {
-            ViewData["transferOrderId"] = new SelectList(_context.TransferOrders.Where(x => x.transferOrderStatus == TransferOrderStatus.Open && x.isIssued == true).ToList(), "transferOrderId", "transferOrderNumber");
+            var toList = _context.TransferOrders.Where(x => x.transferOrderStatus == TransferOrderStatus.Open && x.isIssued == true && x.isReceived == false).ToList();
+            if (!toList.Any())
+            {
+                toList = _context.TransferOrders.Where(x => x.isIssued == true && x.isReceived == false).ToList();
+            }
+            toList.Insert(0, new TransferOrder { transferOrderId = "0", transferOrderNumber = "Select" });
+            ViewData["transferOrderId"] = new SelectList(toList, "transferOrderId", "transferOrderNumber");
             ViewData["branchIdFrom"] = new SelectList(_context.Branches, "branchId", "branchName");
             ViewData["warehouseIdFrom"] = new SelectList(_context.Warehouses, "warehouseId", "warehouseName");
             ViewData["branchIdTo"] = new SelectList(_context.Branches, "branchId", "branchName");
@@ -94,8 +100,34 @@ namespace QuanLyKho.Controllers.Invent
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("transferInId,transferOrderId,transferInNumber,transferInDate,description,branchIdFrom,warehouseIdFrom,branchIdTo,warehouseIdTo,HasChild,createdAt")] TransferIn transferIn)
+        public async Task<IActionResult> Create([Bind("transferOrderId,transferInNumber,transferInDate,description")] TransferIn transferIn)
         {
+            if (transferIn.transferOrderId == "0")
+            {
+                TempData["StatusMessage"] = "Error. Vui lòng chọn Phiếu điều chuyển hợp lệ.";
+                return RedirectToAction(nameof(Create));
+            }
+            // derive related fields before validating
+            var to = await _context.TransferOrders.FirstOrDefaultAsync(x => x.transferOrderId == transferIn.transferOrderId);
+            if (to == null)
+            {
+                TempData["StatusMessage"] = "Error. Không tìm thấy Phiếu điều chuyển.";
+                return RedirectToAction(nameof(Create));
+            }
+            transferIn.warehouseIdFrom = to.warehouseIdFrom;
+            transferIn.warehouseIdTo = to.warehouseIdTo;
+            transferIn.warehouseFrom = await _context.Warehouses.Include(x => x.branch).SingleOrDefaultAsync(x => x.warehouseId == transferIn.warehouseIdFrom);
+            transferIn.branchFrom = transferIn.warehouseFrom?.branch;
+            transferIn.branchIdFrom = transferIn.warehouseFrom?.branchId;
+            transferIn.warehouseTo = await _context.Warehouses.Include(x => x.branch).SingleOrDefaultAsync(x => x.warehouseId == transferIn.warehouseIdTo);
+            transferIn.branchTo = transferIn.warehouseTo?.branch;
+            transferIn.branchIdTo = transferIn.warehouseTo?.branchId;
+
+            ModelState.Remove("warehouseIdFrom");
+            ModelState.Remove("warehouseIdTo");
+            ModelState.Remove("branchIdFrom");
+            ModelState.Remove("branchIdTo");
+
             if (ModelState.IsValid)
             {
 
@@ -115,21 +147,20 @@ namespace QuanLyKho.Controllers.Invent
                     return View(transferIn);
                 }
 
-                TransferOrder to = await _context.TransferOrders.Where(x => x.transferOrderId.Equals(transferIn.transferOrderId)).FirstOrDefaultAsync();
-                transferIn.warehouseIdFrom = to.warehouseIdFrom;
-                transferIn.warehouseIdTo = to.warehouseIdTo;
-
-                transferIn.warehouseFrom = await _context.Warehouses.Include(x => x.branch).SingleOrDefaultAsync(x => x.warehouseId.Equals(transferIn.warehouseIdFrom));
-                transferIn.branchFrom = transferIn.warehouseFrom.branch;
-                transferIn.warehouseTo = await _context.Warehouses.Include(x => x.branch).SingleOrDefaultAsync(x => x.warehouseId.Equals(transferIn.warehouseIdTo));
-                transferIn.branchTo = transferIn.warehouseTo.branch;
-
-
                 to.isReceived = true;
                 to.transferOrderStatus = TransferOrderStatus.Completed;
 
-                _context.Add(transferIn);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Add(transferIn);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateException ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Không thể tạo phiếu nhập điều chuyển: {ex.InnerException?.Message ?? ex.Message}");
+                    ViewData["transferOrderId"] = new SelectList(_context.TransferOrders, "transferOrderId", "transferOrderNumber", transferIn.transferOrderId);
+                    return View(transferIn);
+                }
 
                 //auto create transfer in line, full shipment
                 List<TransferOrderLine> lines = new List<TransferOrderLine>();

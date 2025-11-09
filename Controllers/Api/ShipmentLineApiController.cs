@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyKho.Data;
 using QuanLyKho.Models.Invent;
+using System;
 
 namespace QuanLyKho.Controllers.Api
 {

@@ -8,18 +8,18 @@ using System;
 namespace QuanLyKho.Controllers.Api
 {
     [ApiController]
-    [Route("api/TransferOrderLine")]
-    [Authorize(Roles = "TransferOrder,TransferOrderLine")] // page roles
-    public class TransferOrderLineApiController : ControllerBase
+    [Route("api/TransferInLine")]
+    [Authorize(Roles = "TransferIn,TransferInLine")] // page roles
+    public class TransferInLineApiController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public TransferOrderLineApiController(ApplicationDbContext context)
+        public TransferInLineApiController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/TransferOrderLine?masterid={transferOrderId}
+        // GET: api/TransferInLine?masterid={transferInId}
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Get([FromQuery] string masterid)
@@ -29,12 +29,12 @@ namespace QuanLyKho.Controllers.Api
                 return Ok(new { data = Array.Empty<object>() });
             }
 
-            var rows = await _context.TransferOrderLines
-                .Where(x => x.transferOrderId == masterid)
+            var rows = await _context.TransferInLines
+                .Where(x => x.transferInId == masterid)
                 .Include(x => x.product)
                 .Select(x => new
                 {
-                    x.transferOrderLineId,
+                    x.transferInLineId,
                     x.qty,
                     product = new { productCode = x.product != null ? x.product.productCode : string.Empty }
                 })
@@ -43,27 +43,27 @@ namespace QuanLyKho.Controllers.Api
             return Ok(new { data = rows });
         }
 
-        // POST: api/TransferOrderLine
+        // POST: api/TransferInLine
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] TransferOrderLine payload)
+        public async Task<IActionResult> Post([FromBody] TransferInLine payload)
         {
             if (payload == null)
             {
                 return BadRequest(new { success = false, message = "Invalid payload" });
             }
-            if (string.IsNullOrWhiteSpace(payload.transferOrderLineId))
+            if (string.IsNullOrWhiteSpace(payload.transferInLineId))
             {
-                payload.transferOrderLineId = Guid.NewGuid().ToString();
+                payload.transferInLineId = Guid.NewGuid().ToString();
             }
-            if (string.IsNullOrWhiteSpace(payload.transferOrderId) || string.IsNullOrWhiteSpace(payload.productId))
+            if (string.IsNullOrWhiteSpace(payload.transferInId) || string.IsNullOrWhiteSpace(payload.productId))
             {
-                return BadRequest(new { success = false, message = "transferOrderId and productId are required" });
+                return BadRequest(new { success = false, message = "transferInId and productId are required" });
             }
 
-            var exists = await _context.TransferOrderLines.AnyAsync(x => x.transferOrderLineId == payload.transferOrderLineId);
+            var exists = await _context.TransferInLines.AnyAsync(x => x.transferInLineId == payload.transferInLineId);
             if (!exists)
             {
-                _context.TransferOrderLines.Add(payload);
+                _context.TransferInLines.Add(payload);
             }
             else
             {
@@ -73,16 +73,16 @@ namespace QuanLyKho.Controllers.Api
             return Ok(new { success = true, message = "Saved successfully" });
         }
 
-        // DELETE: api/TransferOrderLine/{id}
+        // DELETE: api/TransferInLine/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var row = await _context.TransferOrderLines.FindAsync(id);
+            var row = await _context.TransferInLines.FindAsync(id);
             if (row == null)
             {
                 return NotFound(new { success = false, message = "Not found" });
             }
-            _context.TransferOrderLines.Remove(row);
+            _context.TransferInLines.Remove(row);
             await _context.SaveChangesAsync();
             return Ok(new { success = true, message = "Deleted" });
         }

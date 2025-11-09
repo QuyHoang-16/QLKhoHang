@@ -26,7 +26,7 @@ namespace QuanLyKho.Models.Invent
         public string transferOrderId { get; set; }
 
         [Display(Name = "Transfer Order")]
-        public TransferOrder transferOrder { get; set; }
+        public TransferOrder? transferOrder { get; set; }
 
         [StringLength(20)]
         [Required]
@@ -48,28 +48,28 @@ namespace QuanLyKho.Models.Invent
         public string branchIdFrom { get; set; }
 
         [Display(Name = "From Branch")]
-        public Branch branchFrom { get; set; }
+        public Branch? branchFrom { get; set; }
 
         [StringLength(38)]
         [Display(Name = "From Warehouse Id")]
         public string warehouseIdFrom { get; set; }
 
         [Display(Name = "From Warehouse")]
-        public Warehouse warehouseFrom { get; set; }
+        public Warehouse? warehouseFrom { get; set; }
 
         [StringLength(38)]
         [Display(Name = "To Branch Id")]
         public string branchIdTo { get; set; }
 
         [Display(Name = "To Branch")]
-        public Branch branchTo { get; set; }
+        public Branch? branchTo { get; set; }
 
         [StringLength(38)]
         [Display(Name = "To Warehouse Id")]
         public string warehouseIdTo { get; set; }
 
         [Display(Name = "To Warehouse")]
-        public Warehouse warehouseTo { get; set; }
+        public Warehouse? warehouseTo { get; set; }
 
         [Display(Name = "Transfer Out Lines")]
         public List<TransferOutLine> transferOutLine { get; set; } = new List<TransferOutLine>();
