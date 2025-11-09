@@ -47,28 +47,28 @@ namespace QuanLyKho.Models.Invent
         public string branchIdFrom { get; set; }
 
         [Display(Name = "From Branch")]
-        public Branch branchFrom { get; set; }
+        public Branch? branchFrom { get; set; }
 
         [StringLength(38)]
         [Display(Name = "From Warehouse")]
         public string warehouseIdFrom { get; set; }
 
         [Display(Name = "From Warehouse")]
-        public Warehouse warehouseFrom { get; set; }
+        public Warehouse? warehouseFrom { get; set; }
 
         [StringLength(38)]
         [Display(Name = "To Branch")]
         public string branchIdTo { get; set; }
 
         [Display(Name = "To Branch")]
-        public Branch branchTo { get; set; }
+        public Branch? branchTo { get; set; }
 
         [StringLength(38)]
         [Display(Name = "To Warehouse")]
         public string warehouseIdTo { get; set; }
 
         [Display(Name = "To Warehouse")]
-        public Warehouse warehouseTo { get; set; }
+        public Warehouse? warehouseTo { get; set; }
 
         [Display(Name = "Transfer Order Status")]
         public TransferOrderStatus transferOrderStatus { get; set; }

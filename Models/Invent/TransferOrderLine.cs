@@ -22,14 +22,14 @@ namespace QuanLyKho.Models.Invent
         public string transferOrderId { get; set; }
 
         [Display(Name = "Transfer Order")]
-        public TransferOrder transferOrder { get; set; }
+        public TransferOrder? transferOrder { get; set; }
 
         [StringLength(38)]
         [Display(Name = "Product Id")]
         public string productId { get; set; }
 
         [Display(Name = "Product")]
-        public Product product { get; set; }
+        public Product? product { get; set; }
 
         [Display(Name = "Qty")]
         public float qty { get; set; }

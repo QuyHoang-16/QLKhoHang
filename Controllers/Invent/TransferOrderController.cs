@@ -96,7 +96,7 @@ namespace QuanLyKho.Controllers.Invent
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("transferOrderId,transferOrderStatus,transferOrderNumber,transferOrderDate,description,picName,branchIdFrom,warehouseIdFrom,branchIdTo,warehouseIdTo,HasChild,createdAt")] TransferOrder transferOrder)
+        public async Task<IActionResult> Create([Bind("transferOrderStatus,transferOrderNumber,transferOrderDate,description,picName,branchIdFrom,warehouseIdFrom,branchIdTo,warehouseIdTo")] TransferOrder transferOrder)
         {
             if (transferOrder.warehouseIdFrom == transferOrder.warehouseIdTo)
             {
@@ -106,17 +106,29 @@ namespace QuanLyKho.Controllers.Invent
 
             if (ModelState.IsValid)
             {
-                transferOrder.warehouseFrom = await _context.Warehouses.Include(x => x.branch).SingleOrDefaultAsync(x => x.warehouseId.Equals(transferOrder.warehouseIdFrom));
-                transferOrder.branchFrom = transferOrder.warehouseFrom.branch;
+                try
+                {
+                    transferOrder.warehouseFrom = await _context.Warehouses.Include(x => x.branch).SingleOrDefaultAsync(x => x.warehouseId.Equals(transferOrder.warehouseIdFrom));
+                    transferOrder.branchFrom = transferOrder.warehouseFrom?.branch;
+                    transferOrder.branchIdFrom = transferOrder.warehouseFrom?.branchId;
 
-                transferOrder.warehouseTo = await _context.Warehouses.SingleOrDefaultAsync(x => x.warehouseId.Equals(transferOrder.warehouseIdTo));
-                transferOrder.branchTo = transferOrder.warehouseTo.branch;
+                    transferOrder.warehouseTo = await _context.Warehouses.SingleOrDefaultAsync(x => x.warehouseId.Equals(transferOrder.warehouseIdTo));
+                    transferOrder.branchTo = transferOrder.warehouseTo?.branch;
+                    transferOrder.branchIdTo = transferOrder.warehouseTo?.branchId;
 
-
-                _context.Add(transferOrder);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), new { id = transferOrder.transferOrderId });
+                    _context.Add(transferOrder);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Details), new { id = transferOrder.transferOrderId });
+                }
+                catch (DbUpdateException ex)
+                {
+                    ModelState.AddModelError(string.Empty, $"Không thể tạo phiếu điều chuyển: {ex.InnerException?.Message ?? ex.Message}");
+                }
             }
+            ViewData["branchIdFrom"] = new SelectList(_context.Branches, "branchId", "branchName", transferOrder.branchIdFrom);
+            ViewData["warehouseIdFrom"] = new SelectList(_context.Warehouses, "warehouseId", "warehouseName", transferOrder.warehouseIdFrom);
+            ViewData["branchIdTo"] = new SelectList(_context.Branches, "branchId", "branchName", transferOrder.branchIdTo);
+            ViewData["warehouseIdTo"] = new SelectList(_context.Warehouses, "warehouseId", "warehouseName", transferOrder.warehouseIdTo);
             return View(transferOrder);
         }
 
