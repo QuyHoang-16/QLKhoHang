@@ -22,28 +22,28 @@ namespace QuanLyKho.Models.Invent
         public string shipmentId { get; set; }
 
         [Display(Name = "Shipment")]
-        public Shipment shipment { get; set; }
+        public Shipment? shipment { get; set; }
 
         [StringLength(38)]
         [Display(Name = "Branch Id")]
         public string branchId { get; set; }
 
         [Display(Name = "Branch")]
-        public Branch branch { get; set; }
+        public Branch? branch { get; set; }
 
         [StringLength(38)]
         [Display(Name = "Warehouse Id")]
         public string warehouseId { get; set; }
 
         [Display(Name = "Warehouse")]
-        public Warehouse warehouse { get; set; }
+        public Warehouse? warehouse { get; set; }
 
         [StringLength(38)]
         [Display(Name = "Product Id")]
         public string productId { get; set; }
 
         [Display(Name = "Product")]
-        public Product product { get; set; }
+        public Product? product { get; set; }
 
         [Display(Name = "Qty")]
         public float qty { get; set; }

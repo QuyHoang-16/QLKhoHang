@@ -28,7 +28,7 @@ namespace QuanLyKho.Models.Invent
         public string salesOrderId { get; set; }
 
         [Display(Name = "Sales Order")]
-        public SalesOrder salesOrder { get; set; }
+        public SalesOrder? salesOrder { get; set; }
 
         [StringLength(20)]
         [Required]
@@ -44,7 +44,7 @@ namespace QuanLyKho.Models.Invent
         public string customerId { get; set; }
 
         [Display(Name = "Customer")]
-        public Customer customer { get; set; }
+        public Customer? customer { get; set; }
 
         [StringLength(50)]
         [Display(Name = "Customer PO Number")]
@@ -59,7 +59,7 @@ namespace QuanLyKho.Models.Invent
         public string branchId { get; set; }
 
         [Display(Name = "Branch")]
-        public Branch branch { get; set; }
+        public Branch? branch { get; set; }
 
         [StringLength(38)]
         [Required]
@@ -67,7 +67,7 @@ namespace QuanLyKho.Models.Invent
         public string warehouseId { get; set; }
 
         [Display(Name = "Warehouse")]
-        public Warehouse warehouse { get; set; }
+        public Warehouse? warehouse { get; set; }
 
         [Display(Name = "Expedition Type")]
         public ExpeditionType expeditionType { get; set; }

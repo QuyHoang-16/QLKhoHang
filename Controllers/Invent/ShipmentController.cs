@@ -22,11 +22,25 @@ namespace QuanLyKho.Controllers.Invent
         }
         public IActionResult GetWarehouseByOrder(string salesOrderId)
         {
-            SalesOrder so = _context.SalesOrders
-                .Include(x => x.branch)
-                .Where(x => x.salesOrderId.Equals(salesOrderId)).FirstOrDefault();
+            if (string.IsNullOrWhiteSpace(salesOrderId) || salesOrderId == "0")
+            {
+                var empty = new List<Warehouse> { new Warehouse { warehouseId = "0", warehouseName = "Select" } };
+                return Json(new SelectList(empty, "warehouseId", "warehouseName"));
+            }
 
-            List<Warehouse> warehouseList = _context.Warehouses.Where(x => x.branchId.Equals(so.branch.branchId)).ToList();
+            var so = _context.SalesOrders
+                .Include(x => x.branch)
+                .FirstOrDefault(x => x.salesOrderId == salesOrderId);
+
+            if (so?.branch == null)
+            {
+                var empty = new List<Warehouse> { new Warehouse { warehouseId = "0", warehouseName = "Select" } };
+                return Json(new SelectList(empty, "warehouseId", "warehouseName"));
+            }
+
+            var warehouseList = _context.Warehouses
+                .Where(x => x.branchId == so.branch.branchId)
+                .ToList();
             warehouseList.Insert(0, new Warehouse { warehouseId = "0", warehouseName = "Select" });
 
             return Json(new SelectList(warehouseList, "warehouseId", "warehouseName"));
@@ -90,7 +104,15 @@ namespace QuanLyKho.Controllers.Invent
             ViewData["StatusMessage"] = TempData["StatusMessage"];
             ViewData["branchId"] = new SelectList(_context.Branches, "branchId", "branchName");
             ViewData["customerId"] = new SelectList(_context.Customers, "customerId", "customerName");
-            List<SalesOrder> soList = _context.SalesOrders.Where(x => x.salesOrderStatus == SalesOrderStatus.Open).ToList();
+            var soList = _context.SalesOrders
+                .Where(x => x.salesOrderStatus == SalesOrderStatus.Open)
+                .ToList();
+            if (!soList.Any())
+            {
+                soList = _context.SalesOrders
+                    .Where(x => x.salesOrderStatus != SalesOrderStatus.Completed)
+                    .ToList();
+            }
             soList.Insert(0, new SalesOrder { salesOrderId = "0", salesOrderNumber = "Select" });
             ViewData["salesOrderId"] = new SelectList(soList, "salesOrderId", "salesOrderNumber");
             ViewData["warehouseId"] = new SelectList(_context.Warehouses, "warehouseId", "warehouseName");
@@ -106,7 +128,7 @@ namespace QuanLyKho.Controllers.Invent
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("shipmentId,salesOrderId,shipmentNumber,shipmentDate,customerId,customerPO,invoice,branchId,warehouseId,expeditionType,expeditionMode,HasChild,createdAt")] Shipment shipment)
+        public async Task<IActionResult> Create([Bind("salesOrderId,shipmentNumber,shipmentDate,customerId,customerPO,invoice,branchId,warehouseId,expeditionType,expeditionMode")] Shipment shipment)
         {
             if (shipment.salesOrderId == "0" || shipment.warehouseId == "0")
             {
@@ -163,9 +185,10 @@ namespace QuanLyKho.Controllers.Invent
                 }
 
                 shipment.warehouse = await _context.Warehouses.Include(x => x.branch).SingleOrDefaultAsync(x => x.warehouseId.Equals(shipment.warehouseId));
-                shipment.branch = shipment.warehouse.branch;
+                shipment.branch = shipment.warehouse?.branch;
+                shipment.branchId = shipment.warehouse?.branchId;
                 shipment.salesOrder = await _context.SalesOrders.Include(x => x.customer).SingleOrDefaultAsync(x => x.salesOrderId.Equals(shipment.salesOrderId));
-                shipment.customer = shipment.salesOrder.customer;
+                shipment.customer = shipment.salesOrder?.customer;
 
                 //change status of salesorder
                 shipment.salesOrder.salesOrderStatus = SalesOrderStatus.Completed;
