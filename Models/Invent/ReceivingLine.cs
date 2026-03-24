@@ -10,48 +10,51 @@ namespace QuanLyKho.Models.Invent
     {
         public ReceivingLine()
         {
+            this.receivingLineId = Guid.NewGuid().ToString();
             this.createdAt = DateTime.UtcNow;
         }
 
+
         [StringLength(38)]
-        [Display(Name = "Receiving Line Id")]
+        [Display(Name = "Mã dòng nhận hàng")]
         public string receivingLineId { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Receiving Id")]
+        [Display(Name = "Mã phiếu nhận hàng")]
         public string receivingId { get; set; }
 
-        [Display(Name = "Receiving")]
+        [Display(Name = "Phiếu nhận hàng")]
         public Receiving? receiving { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Branch Id")]
+        [Display(Name = "Mã chi nhánh")]
         public string branchId { get; set; }
 
-        [Display(Name = "Branch")]
+        [Display(Name = "Chi nhánh")]
         public Branch? branch { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Warehouse Id")]
+        [Display(Name = "Mã kho")]
         public string warehouseId { get; set; }
 
-        [Display(Name = "Warehouse")]
+        [Display(Name = "Kho hàng")]
         public Warehouse? warehouse { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Product Id")]
+        [Display(Name = "Mã sản phẩm")]
         public string productId { get; set; }
 
-        [Display(Name = "Product")]
+        [Display(Name = "Sản phẩm")]
         public Product? product { get; set; }
 
-        [Display(Name = "Qty Order")]
+        [Display(Name = "Số lượng đặt (PO)")]
         public float qty { get; set; }
 
-        [Display(Name = "Qty Receive")]
+        [Display(Name = "Số lượng nhận")]
         public float qtyReceive { get; set; }
 
-        [Display(Name = "Qty Inventory")]
+        [Display(Name = "Số lượng tồn kho sau nhận")]
         public float qtyInventory { get; set; }
+
     }
 }

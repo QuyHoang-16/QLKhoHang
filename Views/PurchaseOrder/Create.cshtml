@@ -1,12 +1,13 @@
-﻿@model QuanLyKho.Models.Invent.PurchaseOrder
+@model QuanLyKho.Models.Invent.PurchaseOrder
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo mới đơn mua hàng";
     Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
     ViewData["EntityIcon"] = "fa fa-file-text";
-    ViewData["CreateInfo"] = "Purchase Order (PO) is a commercial document issued by your company as a buyer to your vendor as a products seller." +
-            " There are three status of PO: 1. Draft (Unconfirmed PO, not ready to receive), 2. Open (Confirmed PO, ready to receive) and 3. Completed (Closed PO, already receive the products).";
+    ViewData["HeaderText"] = "Tạo mới đơn mua hàng";
+    ViewData["CreateInfo"] = "Đơn mua hàng (PO) là chứng từ thương mại do công ty bạn phát hành với tư cách là người mua gửi cho nhà cung cấp với tư cách là người bán sản phẩm." +
+            " Có ba trạng thái của PO: 1. Nháp (PO chưa được xác nhận, chưa sẵn sàng để nhập kho), 2. Mở (PO đã được xác nhận, sẵn sàng để nhập kho) và 3. Hoàn thành (PO đã đóng, đã nhận đủ hàng).";
 }
 
 
@@ -157,3 +158,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

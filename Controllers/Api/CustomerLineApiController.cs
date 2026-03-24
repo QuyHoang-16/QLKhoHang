@@ -8,7 +8,7 @@ namespace QuanLyKho.Controllers.Api
 {
     [ApiController]
     [Route("api/CustomerLine")]
-    [Authorize(Roles = "Customer,CustomerLine")] // allow from Customer details page
+    [Authorize(Roles = "Customer,CustomerLine")] 
     public class CustomerLineApiController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -18,7 +18,7 @@ namespace QuanLyKho.Controllers.Api
             _context = context;
         }
 
-        // GET: api/CustomerLine?masterid={customerId}
+
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] string masterid)
         {
@@ -41,7 +41,7 @@ namespace QuanLyKho.Controllers.Api
             return Ok(new { data = rows });
         }
 
-        // POST: api/CustomerLine
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CustomerLine payload)
         {
@@ -71,7 +71,6 @@ namespace QuanLyKho.Controllers.Api
             return Ok(new { success = true, message = "Saved successfully" });
         }
 
-        // DELETE: api/CustomerLine/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

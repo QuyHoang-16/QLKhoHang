@@ -1,13 +1,13 @@
-﻿@model QuanLyKho.Models.Invent.TransferOrder
+@model QuanLyKho.Models.Invent.TransferOrder
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Sửa";
     Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
     ViewData["EntityIcon"] = "fa fa-recycle";
-    ViewData["EditInfo"] = " TO have three status: 1. Draft (Unconfirmed TO, not ready for transfer), 2. Open (Confirmed TO, ready for transfer) and 3. Completed (Closed TO, already do the transfer process). Change status from [Draft] to [Open] to confirm the transfer order. [Completed] status is auto set when goods issue and goods receive already done.";
+   
 }
 
-@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<partial name="_StatusMessage" model="@ViewBag.StatusMessage" />
 <div class="row">
     <div class="col-md-12">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -90,90 +90,6 @@
             </div>
         </div><div class="row">
             <div class="col-md-12">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="transferOrderId" />
-                <input type="hidden" asp-for="transferOrderNumber" />
-                <input type="hidden" asp-for="isIssued" />
-                <input type="hidden" asp-for="isReceived" />
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Mã phiếu điều chuyển</label>
-                            <input asp-for="transferOrderNumber" class="form-control" disabled />
-                            <span asp-validation-for="transferOrderNumber" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Ngày lập phiếu</label>
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input asp-for="transferOrderDate" value="@Model.transferOrderDate.ToString("MM/dd/yyyy")" class="form-control pull-right datepicker" type="text" />
-                            </div>
-                            <span asp-validation-for="transferOrderDate" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label">Mô tả</label>
-                    <input asp-for="description" class="form-control" />
-                    <span asp-validation-for="description" class="text-danger"></span>
-                </div>
-
-                <div class="row hidden">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Chi nhánh chuyển</label>
-                            <select asp-for="branchIdFrom" class="form-control select2" asp-items="ViewBag.branchIdFrom"></select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Chi nhánh nhận</label>
-                            <select asp-for="branchIdTo" class="form-control select2" asp-items="ViewBag.branchIdTo"></select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Kho chuyển</label>
-                            <select asp-for="warehouseIdFrom" class="form-control select2" asp-items="ViewBag.warehouseIdFrom"></select>
-                            <span asp-validation-for="warehouseIdFrom" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Kho nhận</label>
-                            <select asp-for="warehouseIdTo" class="form-control select2" asp-items="ViewBag.warehouseIdTo"></select>
-                            <span asp-validation-for="warehouseIdTo" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Người phụ trách</label>
-                            <input asp-for="picName" class="form-control" />
-                            <span asp-validation-for="picName" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label">Trạng thái</label>
-                            <select asp-for="transferOrderStatus" class="form-control select2" asp-items="Html.GetEnumSelectList<QuanLyKho.Models.Invent.TransferOrderStatus>()"></select>
-                            <span asp-validation-for="transferOrderStatus" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 </div>
@@ -188,6 +104,7 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
 
 
 

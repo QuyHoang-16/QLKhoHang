@@ -17,61 +17,63 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Transfer In Id")]
+        [Display(Name = "Mã phiếu nhập điều chuyển")]
         public string transferInId { get; set; }
 
         [StringLength(38)]
         [Required]
-        [Display(Name = "Transfer Order Id")]
+        [Display(Name = "Mã phiếu điều chuyển")]
         public string transferOrderId { get; set; }
 
-        [Display(Name = "Transfer Order")]
+        [Display(Name = "Phiếu điều chuyển")]
         public TransferOrder? transferOrder { get; set; }
 
         [StringLength(20)]
         [Required]
-        [Display(Name = "Goods Receive Number")]
+        [Display(Name = "Số phiếu nhập điều chuyển")]
         public string transferInNumber { get; set; }
 
         [Required]
-        [Display(Name = "Goods Receive Date")]
+        [Display(Name = "Ngày nhập điều chuyển")]
         public DateTime transferInDate { get; set; }
 
         [StringLength(100)]
         [Required]
-        [Display(Name = "Description")]
+        [Display(Name = "Mô tả")]
         public string description { get; set; }
 
-
+        // FROM (Kho gửi)
         [StringLength(38)]
-        [Display(Name = "From Branch Id")]
+        [Display(Name = "Mã chi nhánh gửi")]
         public string branchIdFrom { get; set; }
 
-        [Display(Name = "From Branch")]
+        [Display(Name = "Chi nhánh gửi")]
         public Branch? branchFrom { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "From Warehouse Id")]
+        [Display(Name = "Mã kho gửi")]
         public string warehouseIdFrom { get; set; }
 
-        [Display(Name = "From Warehouse")]
+        [Display(Name = "Kho gửi")]
         public Warehouse? warehouseFrom { get; set; }
 
+        // TO (Kho nhận)
         [StringLength(38)]
-        [Display(Name = "To Branch Id")]
+        [Display(Name = "Mã chi nhánh nhận")]
         public string branchIdTo { get; set; }
 
-        [Display(Name = "To Branch")]
+        [Display(Name = "Chi nhánh nhận")]
         public Branch? branchTo { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "To Warehouse Id")]
+        [Display(Name = "Mã kho nhận")]
         public string warehouseIdTo { get; set; }
 
-        [Display(Name = "To Warehouse")]
+        [Display(Name = "Kho nhận")]
         public Warehouse? warehouseTo { get; set; }
 
-        [Display(Name = "Transfer In Lines")]
+        [Display(Name = "Danh sách chi tiết nhập điều chuyển")]
         public List<TransferInLine> transferInLine { get; set; } = new List<TransferInLine>();
+
     }
 }

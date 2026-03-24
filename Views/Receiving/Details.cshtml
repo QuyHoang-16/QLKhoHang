@@ -1,7 +1,7 @@
 ﻿@model QuanLyKho.Models.Invent.Receiving
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết";
     Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
     ViewData["EntityIcon"] = "fa fa-truck";
 }
@@ -52,7 +52,7 @@
             <!-- /.box-body -->
             <div class="box-footer">
                 <div class="form-group">
-                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                    <a asp-action="Index" class="btn btn-default">Trở lại danh sách</a>
                     <a asp-action="ShowGSRN" asp-route-id="@Model.receivingId" class="btn btn-primary pull-right"><i class="fa fa-print"></i> Print GSRN</a>
                 </div>
             </div>
@@ -218,4 +218,5 @@
 
       </script>
 }
+
 

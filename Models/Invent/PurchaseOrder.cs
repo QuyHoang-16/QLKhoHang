@@ -22,78 +22,79 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Purchase Order Id")]
+        [Display(Name = "Mã đơn mua hàng")]
         public string purchaseOrderId { get; set; }
 
         [StringLength(20)]
         [Required]
-        [Display(Name = "PO Number")]
+        [Display(Name = "Số PO")]
         public string purchaseOrderNumber { get; set; }
-        
-        [Display(Name = "Terms of Payment (TOP)")]
+
+        [Display(Name = "Điều khoản thanh toán (TOP)")]
         public TOP top { get; set; }
 
-        [Display(Name = "PO Date")]
+        [Display(Name = "Ngày tạo PO")]
         public DateTime poDate { get; set; }
 
-        [Display(Name = "Delivery Date")]
+        [Display(Name = "Ngày giao hàng")]
         public DateTime deliveryDate { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Delivery Address")]
+        [Display(Name = "Địa chỉ giao hàng")]
         public string deliveryAddress { get; set; }
 
         [StringLength(30)]
-        [Display(Name = "Reference Number (Internal)")]
+        [Display(Name = "Số tham chiếu nội bộ")]
         public string referenceNumberInternal { get; set; }
 
         [StringLength(30)]
-        [Display(Name = "Reference Number (External)")]
+        [Display(Name = "Số tham chiếu từ nhà cung cấp")]
         public string referenceNumberExternal { get; set; }
 
         [StringLength(100)]
-        [Display(Name = "Description")]
+        [Display(Name = "Mô tả")]
         public string description { get; set; }
 
         [StringLength(38)]
         [Required]
-        [Display(Name = "Branch Id")]
+        [Display(Name = "Mã chi nhánh")]
         public string branchId { get; set; }
 
-        [Display(Name = "Branch")]
+        [Display(Name = "Chi nhánh")]
         public Branch? branch { get; set; }
 
         [StringLength(38)]
         [Required]
-        [Display(Name = "Vendor Id")]
+        [Display(Name = "Mã nhà cung cấp")]
         public string vendorId { get; set; }
 
-        [Display(Name = "Vendor")]
+        [Display(Name = "Nhà cung cấp")]
         public Vendor? vendor { get; set; }
 
         [StringLength(30)]
         [Required]
-        [Display(Name = "PIC Internal")]
+        [Display(Name = "Người phụ trách nội bộ (PIC nội bộ)")]
         public string picInternal { get; set; }
 
         [StringLength(30)]
         [Required]
-        [Display(Name = "PIC Vendor")]
+        [Display(Name = "Người phụ trách nhà cung cấp (PIC NCC)")]
         public string picVendor { get; set; }
 
-        [Display(Name = "PO Status")]
+        [Display(Name = "Trạng thái đơn mua hàng")]
         public PurchaseOrderStatus purchaseOrderStatus { get; set; }
 
-        [Display(Name = "Total Discount")]
+        [Display(Name = "Tổng giảm giá")]
         public decimal totalDiscountAmount { get; set; }
 
-        [Display(Name = "Total Order")]
+        [Display(Name = "Tổng giá trị đơn hàng")]
         public decimal totalOrderAmount { get; set; }
 
-        [Display(Name = "Purchase Receive Number")]
+        [Display(Name = "Số phiếu nhận hàng (PR)")]
         public string? purchaseReceiveNumber { get; set; }
 
-        [Display(Name = "Purchase Order Lines")]
+        [Display(Name = "Danh sách chi tiết đơn hàng")]
         public List<PurchaseOrderLine> purchaseOrderLine { get; set; } = new List<PurchaseOrderLine>();
+
     }
 }

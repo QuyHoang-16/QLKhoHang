@@ -90,9 +90,7 @@ namespace QuanLyKho.Controllers.Invent
 
 
 
-        // POST: PurchaseOrder/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("purchaseOrderNumber,top,poDate,deliveryDate,deliveryAddress,referenceNumberInternal,referenceNumberExternal,description,vendorId,branchId,picInternal,picVendor,purchaseOrderStatus,totalDiscountAmount,totalOrderAmount")] PurchaseOrder purchaseOrder)
@@ -140,9 +138,7 @@ namespace QuanLyKho.Controllers.Invent
             return View(purchaseOrder);
         }
 
-        // POST: PurchaseOrder/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("purchaseOrderId,purchaseOrderNumber,top,poDate,deliveryDate,deliveryAddress,referenceNumberInternal,referenceNumberExternal,description,vendorId,branchId,picInternal,picVendor,purchaseOrderStatus,totalDiscountAmount,totalOrderAmount,purchaseReceiveNumber,HasChild,createdAt")] PurchaseOrder purchaseOrder)

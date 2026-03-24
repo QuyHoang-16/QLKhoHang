@@ -1,7 +1,7 @@
 ﻿@model QuanLyKho.Models.Invent.Warehouse
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết";
     Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
     ViewData["EntityIcon"] = "fa fa-cubes";
 }
@@ -48,7 +48,7 @@
             <!-- /.box-body -->
             <div class="box-footer">
                 <div class="form-group">
-                    <a asp-action="Edit" asp-route-id="@Model.warehouseId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@Model.warehouseId" class="btn btn-primary">Sửa</a>
                     <a asp-action="Index" class="btn btn-default">Back To List</a>
                 </div>
             </div>
@@ -57,4 +57,5 @@
     <div class="col-md-3">
     </div>
 </div>
+
 

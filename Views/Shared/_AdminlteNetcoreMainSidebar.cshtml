@@ -1,4 +1,4 @@
-﻿@model QuanLyKho.Models.ApplicationUser
+@model QuanLyKho.Models.ApplicationUser
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 @inject QuanLyKho.Data.ApplicationDbContext Context
@@ -158,7 +158,7 @@
 
                 @if (appUser.ApplicationUserRole)
                 {
-                    <li class="header">CONFIG</li>
+                    <li class="header">CẤU HÌNH</li>
                     <li class="@Html.IsSelected(controller: "ApplicationUser")">
                         <a href="@Url.Action("Index", "ApplicationUser")">
                             <i class="fa fa-users"></i> <span>Người Dùng</span>

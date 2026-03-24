@@ -1,10 +1,10 @@
 ﻿@model QuanLyKho.Models.Invent.SalesOrder
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Sửa";
     Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
     ViewData["EntityIcon"] = "fa fa-cart-plus";
-    ViewData["EditInfo"] = " SO have three status: 1. Draft (Unconfirmed SO, not ready for shipment), 2. Open (Confirmed SO, ready for shipment) and 3. Completed (Closed SO, already ship the order). Change status from [Draft] to [Open] to confirm the order. [Completed] status is auto set when SO used in Product Shipment / Delivery order.";
+    
 
 }
 
@@ -159,6 +159,7 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
 
 
 

@@ -15,45 +15,46 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Vendor Id")]
+        [Display(Name = "Mã nhà cung cấp")]
         public string vendorId { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Vendor Name")]
+        [Display(Name = "Tên nhà cung cấp")]
         [Required]
         public string vendorName { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Description")]
+        [Display(Name = "Mô tả")]
         public string description { get; set; }
-        
-        [Display(Name = "Business Size")]
+
+        [Display(Name = "Quy mô doanh nghiệp")]
         public BusinessSize size { get; set; }
 
         //IBaseAddress
-        [Display(Name = "Street Address 1")]
+        [Display(Name = "Địa chỉ (Số nhà / Đường 1)")]
         [Required]
         [StringLength(50)]
         public string street1 { get; set; }
 
-        [Display(Name = "Street Address 2")]
+        [Display(Name = "Địa chỉ bổ sung (Đường 2)")]
         [StringLength(50)]
         public string street2 { get; set; }
 
-        [Display(Name = "City")]
+        [Display(Name = "Thành phố")]
         [StringLength(30)]
         public string city { get; set; }
 
-        [Display(Name = "Province")]
+        [Display(Name = "Tỉnh / Thành phố")]
         [StringLength(30)]
         public string province { get; set; }
 
-        [Display(Name = "Country")]
+        [Display(Name = "Quốc gia")]
         [StringLength(30)]
         public string country { get; set; }
         //IBaseAddress
 
-        [Display(Name = "Vendor Contacts")]
+        [Display(Name = "Danh sách liên hệ nhà cung cấp")]
         public List<VendorLine> vendorLine { get; set; } = new List<VendorLine>();
+
     }
 }

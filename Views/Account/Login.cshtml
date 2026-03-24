@@ -1,4 +1,4 @@
-﻿@using System.Collections.Generic
+@using System.Collections.Generic
 @using System.Linq
 @using Microsoft.AspNetCore.Http
 @* @using Microsoft.AspNetCore.Http.authentication *@
@@ -15,19 +15,19 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <div class="login-logo bg-primary">
-            <i class="fa fa-cubes"></i><a href="@QuanLyKho.MVC.Pages.HomeIndex.Url" style="color:white"><b>IN</b>VENTORY</a>
+            <i class="fa fa-cubes"></i><a href="@QuanLyKho.MVC.Pages.HomeIndex.Url" style="color:white"><b>QUẢN LÝ</b> KHO</a>
         </div>
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Đăng nhập để bắt đầu phiên làm việc</p>
         <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
             <div class="form-group has-feedback">
-                <label asp-for="Email"></label>
+                <label asp-for="Email">Email</label>
                 <input asp-for="Email" type="email" value="super@admin.com" class="form-control" placeholder="Email" />
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group has-feedback">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" type="password" value="123456" class="form-control" placeholder="Password" />
+                <label asp-for="Password">Mật khẩu</label>
+                <input asp-for="Password" type="password" value="123456" class="form-control" placeholder="Mật khẩu" />
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
@@ -41,24 +41,24 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
                 </div>
                 <!-- /.col -->
             </div>
             <div class="social-auth-links text-center hidden">
-                <p>- OR -</p>
+                <p>- HOẶC -</p>
                 <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
-                    <i class="fa fa-facebook"></i> Sign in using
+                    <i class="fa fa-facebook"></i> Đăng nhập bằng
                     Facebook
                 </a>
                 <a href="#" class="btn btn-block btn-social btn-google btn-flat">
-                    <i class="fa fa-google-plus"></i> Sign in using
+                    <i class="fa fa-google-plus"></i> Đăng nhập bằng
                     Google+
                 </a>
             </div>
             <!-- /.social-auth-links -->
-            <a asp-action="ForgotPassword">I forgot my password</a><br>
-            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text-center">Register a new membership</a>
+            <a asp-action="ForgotPassword">Quên mật khẩu</a><br>
+            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text-center">Đăng ký thành viên mới</a>
             <p class="pull-right">
                 <span style="font-style:italic;"><small>*Demo => Email: super@admin.com Password: 123456</small></span>
             </p>

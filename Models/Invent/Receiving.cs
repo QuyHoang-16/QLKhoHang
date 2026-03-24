@@ -17,58 +17,59 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Receiving Id")]
+        [Display(Name = "Mã phiếu nhận hàng")]
         public string receivingId { get; set; }
 
         [StringLength(38)]
         [Required]
-        [Display(Name = "Purchase Order Id")]
+        [Display(Name = "Mã đơn mua hàng")]
         public string purchaseOrderId { get; set; }
 
-        [Display(Name = "Purchase Order")]
+        [Display(Name = "Đơn mua hàng")]
         public PurchaseOrder? purchaseOrder { get; set; }
 
         [StringLength(20)]
         [Required]
-        [Display(Name = "GSRN Number")]
+        [Display(Name = "Số phiếu GSRN")]
         public string receivingNumber { get; set; }
-        
+
         [Required]
-        [Display(Name = "GSRN Date")]
+        [Display(Name = "Ngày nhận hàng")]
         public DateTime receivingDate { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Vendor Id")]
+        [Display(Name = "Mã nhà cung cấp")]
         public string vendorId { get; set; }
 
-        [Display(Name = "Vendor")]
+        [Display(Name = "Nhà cung cấp")]
         public Vendor? vendor { get; set; }
 
         [StringLength(50)]
         [Required]
-        [Display(Name = "Vendor DO Number")]
+        [Display(Name = "Số DO của nhà cung cấp")]
         public string vendorDO { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Vendor Invoice Number")]
+        [Display(Name = "Số hóa đơn của nhà cung cấp")]
         public string vendorInvoice { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Branch Id")]
+        [Display(Name = "Mã chi nhánh")]
         public string branchId { get; set; }
 
-        [Display(Name = "Branch")]
+        [Display(Name = "Chi nhánh")]
         public Branch? branch { get; set; }
 
         [StringLength(38)]
         [Required]
-        [Display(Name = "Warehouse Id")]
+        [Display(Name = "Mã kho")]
         public string warehouseId { get; set; }
 
-        [Display(Name = "Warehouse")]
+        [Display(Name = "Kho hàng")]
         public Warehouse? warehouse { get; set; }
 
-        [Display(Name = "Receiving Lines")]
+        [Display(Name = "Danh sách chi tiết nhận hàng")]
         public List<ReceivingLine> receivingLine { get; set; } = new List<ReceivingLine>();
+
     }
 }

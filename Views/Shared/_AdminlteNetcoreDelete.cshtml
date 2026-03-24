@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 @inject QuanLyKho.Data.ApplicationDbContext Context
@@ -38,7 +38,7 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    <i class="@entityIcon text-primary"></i> Delete @controller ?
+                    <i class="@entityIcon text-primary"></i> Xóa @controller ?
                 </h1>
             </section>
             <!-- Main content -->
@@ -58,11 +58,11 @@
                                         <input type="hidden" asp-for="@id" />
                                         @if (isCanDeleted)
                                         {
-                                            <input type="submit" value="Delete" class="btn btn-danger" />
+                                            <input type="submit" value="Xóa" class="btn btn-danger" />
 
                                         }
                                         
-                                        <a asp-action="Index" class="btn btn-default">Back to List</a>
+                                        <a asp-action="Index" class="btn btn-default">Trở lại danh sách</a>
                                     </form>
                                 </div>
                             </div>

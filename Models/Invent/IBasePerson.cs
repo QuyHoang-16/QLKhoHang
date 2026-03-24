@@ -8,28 +8,28 @@ namespace QuanLyKho.Models.Invent
 {
     public interface IBasePerson
     {
-        [Display(Name = "First Name")]
+        [Display(Name = "Tên")]
         [Required]
         [StringLength(20)]
         string firstName { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Display(Name = "Họ")]
         [Required]
         [StringLength(20)]
         string lastName { get; set; }
 
-        [Display(Name = "Middle Name")]
+        [Display(Name = "Tên đệm")]
         [StringLength(20)]
         string middleName { get; set; }
 
-        [Display(Name = "Nick Name")]
+        [Display(Name = "Biệt danh")]
         [StringLength(20)]
         string nickName { get; set; }
 
-        [Display(Name = "Gender")]
+        [Display(Name = "Giới tính")]
         Gender gender { get; set; }
 
-        [Display(Name = "Salutation")]
+        [Display(Name = "Xưng hô")]
         Salutation salutation { get; set; }
     }
 

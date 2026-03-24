@@ -1,7 +1,7 @@
 ﻿@model QuanLyKho.Models.Invent.Shipment
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết";
     Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
     ViewData["EntityIcon"] = "fa fa-plane";
 }
@@ -54,7 +54,7 @@
             <!-- /.box-body -->
             <div class="box-footer">
                 <div class="form-group">
-                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                    <a asp-action="Index" class="btn btn-default">Trở lại danh sách</a>
                     <a asp-action="ShowDeliveryOrder" asp-route-id="@Model.shipmentId" class="btn btn-primary pull-right"><i class="fa fa-print"></i> Print Delivery Order</a>
                 </div>
             </div>
@@ -220,4 +220,5 @@
 
       </script>
 }
+
 

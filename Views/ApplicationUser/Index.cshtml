@@ -1,12 +1,29 @@
 ﻿@model IEnumerable<QuanLyKho.Models.ApplicationUser>
 
-
 @{
     ViewData["Title"] = "Application User";
     Layout = "_AdminlteNetcore";
+
+    // Map tên Role (property) -> tên hiển thị tiếng Việt
+    var roleDisplayNames = new Dictionary<string, string>
+    {
+        { "TransferOrderRole", "Phiếu chuyển kho" },
+        { "WarehouseRole", "Kho hàng" },
+        { "ApplicationUserRole", "Quản lý người dùng" },
+        { "HomeRole", "Trang chủ" },
+        { "BranchRole", "Chi nhánh" },
+        { "CustomerRole", "Khách hàng" },
+        { "ProductRole", "Sản phẩm" },
+        { "PurchaseOrderRole", "Đơn mua hàng" },
+        { "ReceivingRole", "Nhập hàng" },
+        { "SalesOrderRole", "Đơn bán hàng" },
+        { "ShipmentRole", "Giao hàng" },
+        { "StockRole", "Tồn kho" },
+        { "TransferInRole", "Chuyển kho" },
+        { "TransferOutRole", "Xuất chuyển kho" }, // nếu có
+        { "VendorRole", "Nhà cung cấp" }          // nếu có
+    };
 }
-
-
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -16,7 +33,7 @@
         <!-- Default box -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Roles</h3>
+                <h3 class="box-title">Phân quyền</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
                             title="Collapse">
@@ -33,60 +50,56 @@
                     <thead>
                         <tr>
                             <th></th>
-                            @{ 
+                            @{
                                 Type t = typeof(ApplicationUser);
                                 foreach (System.Reflection.PropertyInfo item in t.GetProperties())
                                 {
-                                    if (item.Name.Contains("Role"))
+                                    if (item.Name.Contains("Role") && !item.Name.Contains("Line"))
                                     {
-                                        if (!item.Name.Contains("Line"))
-                                        {
-                                            <th>
-                                                @item.Name
-                                            </th>
-                                        }
+                                        var vnName = roleDisplayNames.ContainsKey(item.Name)
+                                        ? roleDisplayNames[item.Name]
+                                        : item.Name; // nếu chưa map thì hiện tên gốc
 
+                                        <th>@vnName</th>
                                     }
                                 }
                             }
                             <th>
                                 @Html.DisplayNameFor(model => model.UserName)
                             </th>
-
-
                         </tr>
                     </thead>
+
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
-                            </td>
-                            @{ 
-                                Type ct = item.GetType();
-                                foreach (System.Reflection.PropertyInfo ci in ct.GetProperties())
-                                {
-                                    if (ci.Name.Contains("Role"))
+                            <tr>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-pencil"></i></a>
+                                </td>
+
+                                @{
+                                    Type ct = item.GetType();
+                                    foreach (System.Reflection.PropertyInfo ci in ct.GetProperties())
                                     {
-                                        if (!ci.Name.Contains("Line"))
+                                        if (ci.Name.Contains("Role") && !ci.Name.Contains("Line"))
                                         {
-                                            bool vlue = false;
-                                            vlue = (bool)ci.GetValue(item, null);
-                                            <td><input checked="@vlue"  class="check-box" disabled="disabled" type="checkbox"></td>
+                                            bool vlue = (bool)ci.GetValue(item, null);
+                                            <td>
+                                                <input checked="@vlue" class="check-box" disabled="disabled" type="checkbox">
+                                            </td>
                                         }
                                     }
                                 }
-                            }
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserName)
-                            </td>
 
-
-                        </tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
+
             </div>
             <!-- /.box-body -->
         </div>
@@ -95,24 +108,14 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+@section Styles { }
 
-
-@section Styles{
-
-}
-
-
-@section Scripts{
-    <script>
-        $('.table').DataTable({
-            "lengthChange": false,
-            "info": false,
-            "scrollX": true
-        })
-    </script>
-}
-
-
-
-
-
+    @section Scripts {
+        <script>
+            $('.table').DataTable({
+                "lengthChange": false,
+                "info": false,
+                "scrollX": true
+            })
+        </script>
+    }

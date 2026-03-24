@@ -1,17 +1,18 @@
-﻿@model QuanLyKho.Models.Invent.TransferOrder
+@model QuanLyKho.Models.Invent.TransferOrder
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo mới lệnh điều chuyển";
     Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
     ViewData["EntityIcon"] = "fa fa-recycle";
-    ViewData["CreateInfo"] = "Transfer Order (TO) is a process of transfering products from one warehouse to another warehouse. From and To Warehouse should be different";
+    ViewData["HeaderText"] = "Tạo mới lệnh điều chuyển";
+    ViewData["CreateInfo"] = "Lệnh điều chuyển (TO) là quy trình chuyển sản phẩm từ kho này sang kho khác. Kho đi và Kho đến phải khác nhau.";
 }
 
-@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<partial name="_StatusMessage" model="@ViewBag.StatusMessage" />
 <div class="row">
     <div class="col-md-12">
-        @Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+        <partial name="_StatusMessage" model="@ViewBag.StatusMessage" />
         <div asp-validation-summary="All" class="text-danger"></div>
 
         <input type="hidden" asp-for="transferOrderStatus" />
@@ -45,7 +46,7 @@
             <span asp-validation-for="description" class="text-danger"></span>
         </div>
 
-        <!-- Chi nhánh ẩn -->
+
         <div class="row hidden">
             <div class="col-md-6">
                 <div class="form-group">
@@ -63,7 +64,7 @@
             </div>
         </div>
 
-        <!-- Kho -->
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -81,7 +82,7 @@
             </div>
         </div>
 
-        <!-- Người phụ trách & trạng thái -->
+
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -106,3 +107,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

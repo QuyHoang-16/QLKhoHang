@@ -10,31 +10,34 @@ namespace QuanLyKho.Models.Invent
     {
         public TransferInLine()
         {
+
+            this.transferInLineId = Guid.NewGuid().ToString();
             this.createdAt = DateTime.UtcNow;
         }
 
         [StringLength(38)]
-        [Display(Name = "Transfer In Line Id")]
+        [Display(Name = "Mã dòng nhập điều chuyển")]
         public string transferInLineId { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Goods Receive Id")]
+        [Display(Name = "Mã phiếu nhập điều chuyển")]
         public string transferInId { get; set; }
 
-        [Display(Name = "Goods Receive")]
+        [Display(Name = "Phiếu nhập điều chuyển")]
         public TransferIn? transferIn { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Product Id")]
+        [Display(Name = "Mã sản phẩm")]
         public string productId { get; set; }
 
-        [Display(Name = "Product")]
+        [Display(Name = "Sản phẩm")]
         public Product? product { get; set; }
 
-        [Display(Name = "Qty")]
+        [Display(Name = "Số lượng nhập")]
         public float qty { get; set; }
 
-        [Display(Name = "Qty Inventory")]
+        [Display(Name = "Số lượng tồn kho sau nhập")]
         public float qtyInventory { get; set; }
+
     }
 }

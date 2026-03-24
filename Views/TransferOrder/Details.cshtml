@@ -1,7 +1,7 @@
 ﻿@model QuanLyKho.Models.Invent.TransferOrder
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết";
     Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
     ViewData["EntityIcon"] = "fa fa-recycle";
     ViewData["DetailInfo"] = "If the transfer process already running (goods issue and goods receive), products can not be edited, deleted or added.";
@@ -49,9 +49,9 @@
             <!-- /.box-body -->
             <div class="box-footer">
                 <div class="form-group">
-                    <a asp-action="Edit" asp-route-id="@Model.transferOrderId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@Model.transferOrderId" class="btn btn-primary">Sửa</a>
                     <a asp-action="ShowTransferOrder" asp-route-id="@Model.transferOrderId" class="btn btn-primary pull-right"><i class="fa fa-print"></i> Print Transfer Order</a>
-                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                    <a asp-action="Index" class="btn btn-default">Trở lại danh sách</a>
                 </div>
             </div>
             <!-- /.box-footer-->
@@ -227,4 +227,5 @@
 
       </script>
 }
+
 

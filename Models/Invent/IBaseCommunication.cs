@@ -8,11 +8,11 @@ namespace QuanLyKho.Models.Invent
 {
     public interface IBaseCommunication
     {
-        [Display(Name = "Mobile Phone")]
+        [Display(Name = "Điện thoại di động")]
         [StringLength(20)]
         string mobilePhone { get; set; }
 
-        [Display(Name = "Office Phone")]
+        [Display(Name = "Điện thoại cơ quan")]
         [StringLength(20)]
         string officePhone { get; set; }
 
@@ -20,11 +20,11 @@ namespace QuanLyKho.Models.Invent
         [StringLength(20)]
         string fax { get; set; }
 
-        [Display(Name = "Personal Email")]
+        [Display(Name = "Email cá nhân")]
         [StringLength(50)]
         string personalEmail { get; set; }
 
-        [Display(Name = "Work Email")]
+        [Display(Name = "Email công việc")]
         [StringLength(50)]
         string workEmail { get; set; }
 

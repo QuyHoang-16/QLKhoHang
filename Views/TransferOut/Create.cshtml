@@ -1,14 +1,15 @@
-﻿@model QuanLyKho.Models.Invent.TransferOut
+@model QuanLyKho.Models.Invent.TransferOut
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo mới phiếu xuất điều chuyển";
     Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
     ViewData["EntityIcon"] = "fa fa-upload";
-    ViewData["CreateInfo"] = "Goods issue or transfer out, can only process [Open] transfer order that have not been processed as goods issue or goods receive. Already processed transfer order will not show in dropdownlist.";
+    ViewData["HeaderText"] = "Tạo mới phiếu xuất điều chuyển";
+    ViewData["CreateInfo"] = "Xuất kho hoặc xuất điều chuyển, chỉ có thể xử lý các Lệnh điều chuyển [Mở] chưa được xử lý xuất hoặc nhập kho. Lệnh điều chuyển đã xử lý sẽ không hiển thị trong danh sách chọn.";
 }
 
-@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<partial name="_StatusMessage" model="@ViewBag.StatusMessage" />
 <div class="row">
     <div class="col-md-12">
         <div asp-validation-summary="All" class="text-danger"></div>
@@ -91,3 +92,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

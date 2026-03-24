@@ -14,37 +14,36 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Product Id")]
+        [Display(Name = "Mã sản phẩm")]
         public string productId { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Product Code")]
+        [Display(Name = "Mã hàng hóa")]
         [Required]
         public string productCode { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Product Name")]
+        [Display(Name = "Tên sản phẩm")]
         [Required]
         public string productName { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Description")]
+        [Display(Name = "Mô tả")]
         public string description { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Barcode")]
+        [Display(Name = "Mã vạch (Barcode)")]
         public string barcode { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Serial Number")]
+        [Display(Name = "Số serial (Serial Number)")]
         public string serialNumber { get; set; }
 
-        
-        [Display(Name = "Product Type")]
+        [Display(Name = "Loại sản phẩm")]
         public ProductType productType { get; set; }
 
-       
-        [Display(Name = "Unit of Measure (UOM)")]
+        [Display(Name = "Đơn vị tính (UOM)")]
         public UOM uom { get; set; }
+
     }
 }

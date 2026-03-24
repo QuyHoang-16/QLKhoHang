@@ -1,7 +1,7 @@
 ﻿@model QuanLyKho.Models.Invent.TransferOut
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết";
     Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
     ViewData["EntityIcon"] = "fa fa-upload";
 }
@@ -85,7 +85,7 @@
             <div class="box-footer">
                 <div class="form-group">
                     <a asp-action="ShowTransferOut" asp-route-id="@Model.transferOutId" class="btn btn-primary pull-right"><i class="fa fa-print"></i> Print Goods Issue</a>
-                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                    <a asp-action="Index" class="btn btn-default">Trở lại danh sách</a>
                 </div>
             </div>
             <!-- /.box-footer-->
@@ -248,4 +248,5 @@
 
       </script>
 }
+
 

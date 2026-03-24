@@ -1,10 +1,10 @@
 ﻿@model QuanLyKho.Models.Invent.Product
 @inject QuanLyKho.Data.ApplicationDbContext _context;
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Xóa";
     Layout = "~/Views/Shared/_AdminlteNetcoreDelete.cshtml";
     ViewData["EntityIcon"] = "fa fa-tags";
-    ViewData["DeleteInfo"] = "Product that already have transactions (PO, SO, Transfer Order) can not be deleted.";
+    ViewData["DeleteInfo"] = "Product đã có giao dịch (PO, SO, Transfer Order) không thể xóa.";
     QuanLyKho.Models.Invent.PurchaseOrderLine poline = _context.PurchaseOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
     QuanLyKho.Models.Invent.SalesOrderLine soline = _context.SalesOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
     QuanLyKho.Models.Invent.TransferOrderLine toline = _context.TransferOrderLines.Where(x => x.productId.Equals(Model.productId)).FirstOrDefault();
@@ -44,3 +44,4 @@
         <dd>@Html.DisplayFor(model => model.createdAt)</dd>
     </dl>
 </div>
+

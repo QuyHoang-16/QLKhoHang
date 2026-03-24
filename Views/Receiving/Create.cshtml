@@ -1,17 +1,17 @@
-﻿@model QuanLyKho.Models.Invent.Receiving
+@model QuanLyKho.Models.Invent.Receiving
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo mới phiếu nhập kho";
     Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
     ViewData["EntityIcon"] = "fa fa-truck";
-    ViewData["CreateInfo"] = "Receiving is a process of product receive from your vendor. After inspecting and confirm all goods have been received, warehouse team then will issue internal document called Goods Service Receive Note (GSRN) as a proof of products receive.  Only [Open] purchase order will be available to select for receiving.";
+    ViewData["HeaderText"] = "Tạo mới phiếu nhập kho";
+    ViewData["CreateInfo"] = "Nhập kho là quá trình nhận sản phẩm từ nhà cung cấp của bạn. Sau khi kiểm tra và xác nhận tất cả hàng hóa đã được nhận, bộ phận kho sẽ phát hành chứng từ nội bộ gọi là Phiếu nhập kho (GSRN) làm bằng chứng nhận sản phẩm. Chỉ các đơn mua hàng (PO) ở trạng thái [Mở] mới có thể chọn để nhập kho.";
 }
 
-@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
 <div class="row">
     <div class="col-md-12">
-        @Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+        <partial name="_StatusMessage" model="@ViewBag.StatusMessage" />
         <div asp-validation-summary="All" class="text-danger"></div>
 
         <div class="form-group hidden">
@@ -109,3 +109,4 @@
         });
     </script>
 }
+

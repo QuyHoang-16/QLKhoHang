@@ -8,24 +8,24 @@ namespace QuanLyKho.Models.Invent
 {
     public interface IBaseAddress
     {
-        [Display(Name = "Street Address 1")]
+        [Display(Name = "Địa chỉ (Số nhà / Đường 1)")]
         [Required]
         [StringLength(50)]
         string street1 { get; set; }
 
-        [Display(Name = "Street Address 2")]
+        [Display(Name = "Địa chỉ bổ sung (Đường 2)")]
         [StringLength(50)]
         string street2 { get; set; }
 
-        [Display(Name = "City")]
+        [Display(Name = "Thành phố")]
         [StringLength(30)]
         string city { get; set; }
 
-        [Display(Name = "Province")]
+        [Display(Name = "Tỉnh / Thành phố")]
         [StringLength(30)]
         string province { get; set; }
 
-        [Display(Name = "Country")]
+        [Display(Name = "Quốc gia")]
         [StringLength(30)]
         string country { get; set; }
     }

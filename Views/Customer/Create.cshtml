@@ -1,10 +1,11 @@
-﻿@model QuanLyKho.Models.Invent.Customer
+@model QuanLyKho.Models.Invent.Customer
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo mới khách hàng";
     Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
     ViewData["EntityIcon"] = "fa fa-bank";
+    ViewData["HeaderText"] = "Tạo mới khách hàng";
 }
 
 
@@ -87,3 +88,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

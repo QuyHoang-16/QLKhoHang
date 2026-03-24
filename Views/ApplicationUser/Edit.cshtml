@@ -1,11 +1,29 @@
-﻿@model QuanLyKho.Models.ApplicationUser
+@model QuanLyKho.Models.ApplicationUser
 
 @{
-    ViewData["Title"] = "Application User Edit";
+    ViewData["Title"] = "Sửa phân quyền";
     Layout = "_AdminlteNetcore";
+    
+    // Map tên Role (property) -> tên hiển thị tiếng Việt
+    var roleDisplayNames = new Dictionary<string, string>
+    {
+        { "TransferOrderRole", "Phiếu chuyển kho" },
+        { "WarehouseRole", "Kho hàng" },
+        { "ApplicationUserRole", "Quản lý người dùng" },
+        { "HomeRole", "Trang chủ" },
+        { "BranchRole", "Chi nhánh" },
+        { "CustomerRole", "Khách hàng" },
+        { "ProductRole", "Sản phẩm" },
+        { "PurchaseOrderRole", "Đơn mua hàng" },
+        { "ReceivingRole", "Nhập hàng" },
+        { "SalesOrderRole", "Đơn bán hàng" },
+        { "ShipmentRole", "Giao hàng" },
+        { "StockRole", "Tồn kho" },
+        { "TransferInRole", "Chuyển kho" },
+        { "TransferOutRole", "Xuất chuyển kho" },
+        { "VendorRole", "Nhà cung cấp" }
+    };
 }
-
-
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -14,13 +32,13 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Edit Roles</h3>
+                    <h3 class="box-title">Phân quyền</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                                title="Collapse">
+                                title="Thu gọn">
                             <i class="fa fa-minus"></i>
                         </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Đóng">
                             <i class="fa fa-times"></i>
                         </button>
                     </div>
@@ -45,12 +63,15 @@
                                     {
                                         bool vlue = false;
                                         vlue = (bool)item.GetValue(Model, null);
+                                        
+                                        var vnName = roleDisplayNames.ContainsKey(item.Name)
+                                            ? roleDisplayNames[item.Name]
+                                            : item.Name;
 
                                          <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
-                                                    @Html.CheckBox(item.Name, vlue) @item.Name
-
+                                                    @Html.CheckBox(item.Name, vlue) @vnName
                                                 </label>
                                             </div>
                                         </div>
@@ -65,6 +86,7 @@
                                 <input asp-for="UserName" class="form-control" />
                                 <span asp-validation-for="UserName" class="text-danger"></span>
                             </div>
+                            <!-- Hidden fields preserved -->
                             <div class="form-group hidden">
                                 <label asp-for="NormalizedUserName" class="control-label"></label>
                                 <input asp-for="NormalizedUserName" class="form-control" />
@@ -102,7 +124,7 @@
                                 <input asp-for="ConcurrencyStamp" class="form-control" />
                                 <span asp-validation-for="ConcurrencyStamp" class="text-danger"></span>
                             </div>
-                            <div class="form-group hidden">
+                             <div class="form-group hidden">
                                 <label asp-for="PhoneNumber" class="control-label"></label>
                                 <input asp-for="PhoneNumber" class="form-control" />
                                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
@@ -138,58 +160,29 @@
                                 <input asp-for="AccessFailedCount" class="form-control" />
                                 <span asp-validation-for="AccessFailedCount" class="text-danger"></span>
                             </div>
-                            <div class="form-group hidden">
-                                <label asp-for="profilePictureUrl" class="control-label"></label>
-                                <input asp-for="profilePictureUrl" class="form-control" />
-                                <span asp-validation-for="profilePictureUrl" class="text-danger"></span>
-                            </div>
 
                         </div>
                     </div>
-
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
                     <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary" />
-                        <a asp-action="Index" class="btn btn-default">Back to List</a>
+                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-default">Trở lại danh sách</a>
                     </div>
                 </div>
                 <!-- /.box-footer-->
             </div>
             <!-- /.box -->
         </section>
+        <!-- /.content -->
     </form>
-    <!-- Main content -->
-    <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
-
 @section Styles{
-
-    <!-- iCheck -->
-    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css"/>
-
 }
-
 
 @section Scripts{
-   
-    <!-- iCheck -->
-    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
-
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <script>
-        $(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' /* optional */
-            });
-        });
-    </script>
 }
-
-

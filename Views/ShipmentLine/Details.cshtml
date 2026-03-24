@@ -1,7 +1,7 @@
 ﻿@model QuanLyKho.Models.Invent.ShipmentLine
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Chi tiết";
     Layout = "~/Views/Shared/_AdminlteNetcoreDetails.cshtml";
 }
 
@@ -76,8 +76,8 @@
             <!-- /.box-body -->
             <div class="box-footer">
                 <div class="form-group">
-                    <a asp-action="Edit" asp-route-id="@Model.shipmentLineId" class="btn btn-primary">Edit</a>
-                    <a asp-action="Index" class="btn btn-default">Back to List</a>
+                    <a asp-action="Edit" asp-route-id="@Model.shipmentLineId" class="btn btn-primary">Sửa</a>
+                    <a asp-action="Index" class="btn btn-default">Trở lại danh sách</a>
                 </div>
             </div>
             <!-- /.box-footer-->
@@ -87,6 +87,7 @@
     <div class="col-md-3">
     </div>
 </div>
+
 
 
 

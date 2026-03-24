@@ -16,33 +16,34 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Purchase Order Line Id")]
+        [Display(Name = "Mã dòng đơn hàng (PO Line)")]
         public string purchaseOrderLineId { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Purchase Order Id")]
+        [Display(Name = "Mã đơn mua hàng")]
         public string purchaseOrderId { get; set; }
 
-        [Display(Name = "Purchase Order")]
+        [Display(Name = "Đơn mua hàng")]
         public PurchaseOrder? purchaseOrder { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Product Id")]
+        [Display(Name = "Mã sản phẩm")]
         public string productId { get; set; }
 
-        [Display(Name = "Product")]
+        [Display(Name = "Sản phẩm")]
         public Product? product { get; set; }
 
-        [Display(Name = "Qty")]
+        [Display(Name = "Số lượng")]
         public float qty { get; set; }
 
-        [Display(Name = "Item Price")]
+        [Display(Name = "Đơn giá")]
         public decimal price { get; set; }
 
-        [Display(Name = "Discount Amount")]
+        [Display(Name = "Số tiền giảm giá")]
         public decimal discountAmount { get; set; }
 
-        [Display(Name = "Total Amount")]
+        [Display(Name = "Thành tiền")]
         public decimal totalAmount { get; set; }
+
     }
 }

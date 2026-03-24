@@ -16,41 +16,43 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Branch Id")]
+        [Display(Name = "Mã chi nhánh")]
         public string branchId { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Branch Name")]
+        [Display(Name = "Tên chi nhánh")]
         [Required]
         public string branchName { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Branch Description")]
+        [Display(Name = "Mô tả chi nhánh")]
         public string description { get; set; }
 
-        [Display(Name = "Is Default Branch ?")]
+        [Display(Name = "Chi nhánh mặc định?")]
         public bool isDefaultBranch { get; set; } = false;
 
-        //IBaseAddress
-        [Display(Name = "Street Address 1")]
+        // IBaseAddress
+        [Display(Name = "Địa chỉ 1")]
         [Required]
         [StringLength(50)]
         public string street1 { get; set; }
 
-        [Display(Name = "Street Address 2")]
+        [Display(Name = "Địa chỉ 2")]
         [StringLength(50)]
         public string street2 { get; set; }
 
-        [Display(Name = "City")]
+        [Display(Name = "Thành phố")]
         [StringLength(30)]
         public string city { get; set; }
 
-        [Display(Name = "Province")]
+        [Display(Name = "Tỉnh/Thành")]
         [StringLength(30)]
         public string province { get; set; }
 
-        [Display(Name = "Country")]
+        [Display(Name = "Quốc gia")]
         [StringLength(30)]
+
+
         public string country { get; set; }
         //IBaseAddress
     }

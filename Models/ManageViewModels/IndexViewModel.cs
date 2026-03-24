@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace QuanLyKho.Models.ManageViewModels
         public string Email { get; set; }
 
         [Phone]
-        [Display(Name = "Phone number")]
+        [Display(Name = "Số điện thoại")]
         public string PhoneNumber { get; set; }
 
         public string StatusMessage { get; set; }

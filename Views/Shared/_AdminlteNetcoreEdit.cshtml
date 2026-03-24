@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 @inject QuanLyKho.Data.ApplicationDbContext Context
@@ -33,7 +33,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        <i class="@entityIcon text-primary"></i> Edit @controller
+                        <i class="@entityIcon text-primary"></i> @(ViewData["HeaderText"] ?? "Sửa " + controller)
                     </h1>
                 </section>
                 <!-- Main content -->
@@ -49,8 +49,8 @@
                                 <!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="form-group">
-                                        <input type="submit" value="Save" class="btn btn-primary" />
-                                        <a asp-action="Index" class="btn btn-default">Back to List</a>
+                                        <input type="submit" value="Lưu" class="btn btn-primary" />
+                                        <a asp-action="Index" class="btn btn-default">Trở lại danh sách</a>
                                     </div>
                                 </div>
                                 <!-- /.box-footer-->
@@ -61,7 +61,7 @@
                             @if (!String.IsNullOrEmpty(ViewBag.EditInfo))
                             {
                                 <div class="callout callout-info" style="margin-bottom: 0!important;">
-                                    <h4><i class="fa fa-info"></i> Info:</h4>
+                                    <h4><i class="fa fa-info"></i> Thông tin:</h4>
                                     <p>
                                         @ViewBag.EditInfo
                                     </p>

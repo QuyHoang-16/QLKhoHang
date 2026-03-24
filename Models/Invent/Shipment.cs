@@ -19,63 +19,64 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Shipment Id")]
+        [Display(Name = "Mã phiếu giao hàng")]
         public string shipmentId { get; set; }
 
         [StringLength(38)]
         [Required]
-        [Display(Name = "Sales Order Id")]
+        [Display(Name = "Mã đơn bán hàng")]
         public string salesOrderId { get; set; }
 
-        [Display(Name = "Sales Order")]
+        [Display(Name = "Đơn bán hàng")]
         public SalesOrder? salesOrder { get; set; }
 
         [StringLength(20)]
         [Required]
-        [Display(Name = "DO Number")]
+        [Display(Name = "Số DO (Delivery Order)")]
         public string shipmentNumber { get; set; }
 
         [Required]
-        [Display(Name = "DO Date")]
+        [Display(Name = "Ngày giao hàng")]
         public DateTime shipmentDate { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Customer Id")]
+        [Display(Name = "Mã khách hàng")]
         public string customerId { get; set; }
 
-        [Display(Name = "Customer")]
+        [Display(Name = "Khách hàng")]
         public Customer? customer { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Customer PO Number")]
+        [Display(Name = "Số PO của khách hàng")]
         public string customerPO { get; set; }
 
         [StringLength(50)]
-        [Display(Name = "Invoice Number")]
+        [Display(Name = "Số hóa đơn (Invoice)")]
         public string invoice { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Branch Id")]
+        [Display(Name = "Mã chi nhánh")]
         public string branchId { get; set; }
 
-        [Display(Name = "Branch")]
+        [Display(Name = "Chi nhánh")]
         public Branch? branch { get; set; }
 
         [StringLength(38)]
         [Required]
-        [Display(Name = "Warehouse Id")]
+        [Display(Name = "Mã kho")]
         public string warehouseId { get; set; }
 
-        [Display(Name = "Warehouse")]
+        [Display(Name = "Kho hàng")]
         public Warehouse? warehouse { get; set; }
 
-        [Display(Name = "Expedition Type")]
+        [Display(Name = "Loại hình vận chuyển")]
         public ExpeditionType expeditionType { get; set; }
 
-        [Display(Name = "Expedition Mode")]
+        [Display(Name = "Phương thức vận chuyển")]
         public ExpeditionMode expeditionMode { get; set; }
 
-        [Display(Name = "Shipment Lines")]
+        [Display(Name = "Danh sách chi tiết giao hàng")]
         public List<ShipmentLine> shipmentLine { get; set; } = new List<ShipmentLine>();
+
     }
 }

@@ -160,11 +160,11 @@ namespace QuanLyKho.Controllers.Invent
                 return RedirectToAction(nameof(Edit), new { id = salesOrder.salesOrderId });
             }
 
-            if (salesOrder.salesOrderStatus == SalesOrderStatus.Completed)
-            {
-                TempData["StatusMessage"] = "Error. Can not edit status to [Completed].";
-                return RedirectToAction(nameof(Edit), new { id = salesOrder.salesOrderId });
-            }
+            //if (salesOrder.salesOrderStatus == SalesOrderStatus.Completed)
+            //{
+            //    TempData["StatusMessage"] = "Error. Can not edit status to [Completed].";
+            //    return RedirectToAction(nameof(Edit), new { id = salesOrder.salesOrderId });
+            //}
 
             if (ModelState.IsValid)
             {

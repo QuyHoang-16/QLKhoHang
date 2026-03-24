@@ -10,6 +10,7 @@ namespace QuanLyKho.Models.Invent
     {
         public TransferOrder()
         {
+            
             this.createdAt = DateTime.UtcNow;
             this.transferOrderId = Guid.NewGuid().ToString();
             this.transferOrderNumber = DateTime.UtcNow.Date.ToString("yyyyMMdd") + Guid.NewGuid().ToString().Substring(0, 5).ToUpper() + "#TO";
@@ -20,66 +21,69 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Transfer Id")]
+        [Display(Name = "Mã phiếu điều chuyển")]
         public string transferOrderId { get; set; }
 
         [StringLength(20)]
         [Required]
-        [Display(Name = "Transfer Number")]
+        [Display(Name = "Số phiếu điều chuyển")]
         public string transferOrderNumber { get; set; }
 
         [Required]
-        [Display(Name = "Transfer Date")]
+        [Display(Name = "Ngày điều chuyển")]
         public DateTime transferOrderDate { get; set; }
 
         [StringLength(100)]
         [Required]
-        [Display(Name = "Description")]
+        [Display(Name = "Mô tả")]
         public string description { get; set; }
 
         [StringLength(50)]
         [Required]
-        [Display(Name = "PIC Name")]
+        [Display(Name = "Người phụ trách (PIC)")]
         public string picName { get; set; }
 
+        // FROM (Kho xuất)
         [StringLength(38)]
-        [Display(Name = "From Branch")]
+        [Display(Name = "Mã chi nhánh gửi")]
         public string branchIdFrom { get; set; }
 
-        [Display(Name = "From Branch")]
+        [Display(Name = "Chi nhánh gửi")]
         public Branch? branchFrom { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "From Warehouse")]
+        [Display(Name = "Mã kho gửi")]
         public string warehouseIdFrom { get; set; }
 
-        [Display(Name = "From Warehouse")]
+        [Display(Name = "Kho gửi")]
         public Warehouse? warehouseFrom { get; set; }
 
+        // TO (Kho nhận)
         [StringLength(38)]
-        [Display(Name = "To Branch")]
+        [Display(Name = "Mã chi nhánh nhận")]
         public string branchIdTo { get; set; }
 
-        [Display(Name = "To Branch")]
+        [Display(Name = "Chi nhánh nhận")]
         public Branch? branchTo { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "To Warehouse")]
+        [Display(Name = "Mã kho nhận")]
         public string warehouseIdTo { get; set; }
 
-        [Display(Name = "To Warehouse")]
+        [Display(Name = "Kho nhận")]
         public Warehouse? warehouseTo { get; set; }
 
-        [Display(Name = "Transfer Order Status")]
+        [Display(Name = "Trạng thái phiếu điều chuyển")]
         public TransferOrderStatus transferOrderStatus { get; set; }
 
-        [Display(Name = "Is Issued")]
+        [Display(Name = "Đã xuất kho?")]
         public bool isIssued { get; set; }
 
-        [Display(Name = "Is Received")]
+        [Display(Name = "Đã nhập kho?")]
         public bool isReceived { get; set; }
 
-        [Display(Name = "Transfer Order Lines")]
+        [Display(Name = "Danh sách chi tiết điều chuyển")]
         public List<TransferOrderLine> transferOrderLine { get; set; } = new List<TransferOrderLine>();
+
     }
 }

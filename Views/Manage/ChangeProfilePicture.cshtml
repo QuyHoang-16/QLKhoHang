@@ -1,10 +1,10 @@
-﻿@model QuanLyKho.Models.ApplicationUser
+@model QuanLyKho.Models.ApplicationUser
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 @inject QuanLyKho.Data.ApplicationDbContext Context
 
 @{
-    ViewData["Title"] = "Change Profile Picture";
+    ViewData["Title"] = "Đổi ảnh đại diện";
     Layout = "_AdminlteNetcore";
     ApplicationUser appUser = await UserManager.GetUserAsync(User);
 }
@@ -14,7 +14,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            User Profile
+            Hồ sơ người dùng
         </h1>
     </section>
     <!-- Main content -->
@@ -70,7 +70,7 @@
                                 <div>
                                     <span class="btn btn-success fileinput-button">
                                         <i class="fa fa-camera bg-green"></i>
-                                        <span>Select file ...</span>
+                                        <span>Chọn tập tin ...</span>
                                         <!-- The file input field used as target for the file upload widget -->
                                         <input id="fileupload" type="file" name="files" multiple="">
                                     </span>

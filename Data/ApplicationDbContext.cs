@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using QuanLyKho.Models;
 
@@ -72,30 +72,6 @@ namespace QuanLyKho.Data
                 .HasForeignKey(x => x.warehouseIdTo)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Tránh lỗi multiple cascade paths cho TransferOrder
-            modelBuilder.Entity<QuanLyKho.Models.Invent.TransferOrder>()
-                .HasOne(x => x.branchFrom)
-                .WithMany()
-                .HasForeignKey(x => x.branchIdFrom)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<QuanLyKho.Models.Invent.TransferOrder>()
-                .HasOne(x => x.branchTo)
-                .WithMany()
-                .HasForeignKey(x => x.branchIdTo)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<QuanLyKho.Models.Invent.TransferOrder>()
-                .HasOne(x => x.warehouseFrom)
-                .WithMany()
-                .HasForeignKey(x => x.warehouseIdFrom)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<QuanLyKho.Models.Invent.TransferOrder>()
-                .HasOne(x => x.warehouseTo)
-                .WithMany()
-                .HasForeignKey(x => x.warehouseIdTo)
-                .OnDelete(DeleteBehavior.Restrict);
 
             // Configure TransferOut relationships to avoid shadow FKs like branchFrombranchId, etc.
             modelBuilder.Entity<QuanLyKho.Models.Invent.TransferOut>()
@@ -187,7 +163,7 @@ namespace QuanLyKho.Data
             // Configure ShipmentLine relationships to avoid multiple cascade paths
             modelBuilder.Entity<QuanLyKho.Models.Invent.ShipmentLine>()
                 .HasOne(x => x.shipment)
-                .WithMany()
+                .WithMany(x => x.shipmentLine)
                 .HasForeignKey(x => x.shipmentId)
                 .OnDelete(DeleteBehavior.Cascade);
 
@@ -237,7 +213,7 @@ namespace QuanLyKho.Data
             // Configure ReceivingLine relationships to avoid multiple cascade paths
             modelBuilder.Entity<QuanLyKho.Models.Invent.ReceivingLine>()
                 .HasOne(x => x.receiving)
-                .WithMany()
+                .WithMany(x => x.receivingLine)
                 .HasForeignKey(x => x.receivingId)
                 .OnDelete(DeleteBehavior.Cascade);
 

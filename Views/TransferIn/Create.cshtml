@@ -1,13 +1,14 @@
-﻿@model QuanLyKho.Models.Invent.TransferIn
+@model QuanLyKho.Models.Invent.TransferIn
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo mới phiếu nhập điều chuyển";
     Layout = "~/Views/Shared/_AdminlteNetcoreCreate.cshtml";
     ViewData["EntityIcon"] = "fa fa-download";
+    ViewData["HeaderText"] = "Tạo mới phiếu nhập điều chuyển";
 }
 
-@Html.Partial("_StatusMessage", (string)ViewBag.StatusMessage)
+<partial name="_StatusMessage" model="@ViewBag.StatusMessage" />
 <div class="row">
     <div class="col-md-12">
         <div asp-validation-summary="All" class="text-danger"></div>
@@ -48,7 +49,6 @@
             <span asp-validation-for="description" class="text-danger"></span>
         </div>
 
-        <!-- giữ nguyên hidden -->
         <div class="row hidden">
             <div class="col-md-6">
                 <div class="form-group">
@@ -87,3 +87,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

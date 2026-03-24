@@ -10,48 +10,50 @@ namespace QuanLyKho.Models.Invent
     {
         public ShipmentLine()
         {
+            this.shipmentLineId = Guid.NewGuid().ToString();
             this.createdAt = DateTime.UtcNow;
         }
 
         [StringLength(38)]
-        [Display(Name = "Shipment Line Id")]
+        [Display(Name = "Mã dòng giao hàng")]
         public string shipmentLineId { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Shipment Id")]
+        [Display(Name = "Mã phiếu giao hàng")]
         public string shipmentId { get; set; }
 
-        [Display(Name = "Shipment")]
+        [Display(Name = "Phiếu giao hàng")]
         public Shipment? shipment { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Branch Id")]
+        [Display(Name = "Mã chi nhánh")]
         public string branchId { get; set; }
 
-        [Display(Name = "Branch")]
+        [Display(Name = "Chi nhánh")]
         public Branch? branch { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Warehouse Id")]
+        [Display(Name = "Mã kho")]
         public string warehouseId { get; set; }
 
-        [Display(Name = "Warehouse")]
+        [Display(Name = "Kho hàng")]
         public Warehouse? warehouse { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Product Id")]
+        [Display(Name = "Mã sản phẩm")]
         public string productId { get; set; }
 
-        [Display(Name = "Product")]
+        [Display(Name = "Sản phẩm")]
         public Product? product { get; set; }
 
-        [Display(Name = "Qty")]
+        [Display(Name = "Số lượng")]
         public float qty { get; set; }
 
-        [Display(Name = "Qty Shipment")]
+        [Display(Name = "Số lượng giao")]
         public float qtyShipment { get; set; }
 
-        [Display(Name = "Qty Inventory")]
+        [Display(Name = "Số lượng tồn kho sau giao")]
         public float qtyInventory { get; set; }
+
     }
 }

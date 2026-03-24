@@ -80,7 +80,7 @@ namespace QuanLyKho.Controllers.Invent
             return View(branch);
         }
 
-
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("branchId,branchName,description,street1,street2,city,province,country,createdAt,isDefaultBranch")] Branch branch)
         {

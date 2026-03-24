@@ -14,53 +14,53 @@ namespace QuanLyKho.Models.Invent
         }
 
         [StringLength(38)]
-        [Display(Name = "Vendor Line Id")]
+        [Display(Name = "Mã liên hệ nhà cung cấp")]
         public string vendorLineId { get; set; }
 
         [StringLength(20)]
-        [Display(Name = "Job Title")]
+        [Display(Name = "Chức vụ")]
         [Required]
         public string jobTitle { get; set; }
 
         [StringLength(38)]
-        [Display(Name = "Vendor Id")]
+        [Display(Name = "Mã nhà cung cấp")]
         public string vendorId { get; set; }
-        
-        [Display(Name = "Vendor")]
+
+        [Display(Name = "Nhà cung cấp")]
         public Vendor? vendor { get; set; }
 
         //IBasePerson
-        [Display(Name = "First Name")]
+        [Display(Name = "Tên")]
         [Required]
         [StringLength(20)]
         public string firstName { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Display(Name = "Họ")]
         [Required]
         [StringLength(20)]
         public string lastName { get; set; }
 
-        [Display(Name = "Middle Name")]
+        [Display(Name = "Tên đệm")]
         [StringLength(20)]
         public string middleName { get; set; }
 
-        [Display(Name = "Nick Name")]
+        [Display(Name = "Biệt danh")]
         [StringLength(20)]
         public string nickName { get; set; }
 
-        [Display(Name = "Gender")]
+        [Display(Name = "Giới tính")]
         public Gender gender { get; set; }
 
-        [Display(Name = "Salutation")]
+        [Display(Name = "Xưng hô")]
         public Salutation salutation { get; set; }
         //IBasePerson
 
         //IBaseCommunication
-        [Display(Name = "Mobile Phone")]
+        [Display(Name = "Điện thoại di động")]
         [StringLength(20)]
         public string mobilePhone { get; set; }
 
-        [Display(Name = "Office Phone")]
+        [Display(Name = "Điện thoại cơ quan")]
         [StringLength(20)]
         public string officePhone { get; set; }
 
@@ -68,13 +68,14 @@ namespace QuanLyKho.Models.Invent
         [StringLength(20)]
         public string fax { get; set; }
 
-        [Display(Name = "Personal Email")]
+        [Display(Name = "Email cá nhân")]
         [StringLength(50)]
         public string personalEmail { get; set; }
 
-        [Display(Name = "Work Email")]
+        [Display(Name = "Email công việc")]
         [StringLength(50)]
         public string workEmail { get; set; }
         //IBaseCommunication
+
     }
 }
