@@ -1,19 +1,26 @@
-      - name: Triển khai lên DevOps Classroom
+name: Deploy to iThutech
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Deploy Webhook
         run: |
           REPO="quy1606/qlkhohang"
-          CONTAINER_PORT=80
-          RESPONSE=$(curl -sS -w "\n%{http_code}" -X POST "${{ secrets.DEPLOY_URL }}?repo=$REPO&tag=latest&slot=7&container_port=$CONTAINER_PORT")
-          BODY=$(echo "$RESPONSE" | sed "$d")
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "${{ secrets.DEPLOY_URL }}?repo=$REPO&tag=latest")
+          BODY=$(echo "$RESPONSE" | head -n1)
           CODE=$(echo "$RESPONSE" | tail -n1)
-          echo "Webhook HTTP: $CODE"
+
+          echo "HTTP CODE: $CODE"
+          echo "RESPONSE: $BODY"
+
           if [ "$CODE" -lt 200 ] || [ "$CODE" -ge 300 ]; then
-            echo "Deploy thất bại. Xem chi tiết trong nhóm log bên dưới."
-            echo "::group::Chi tiết webhook JSON"
-            echo "$BODY" | python3 -m json.tool 2>/dev/null || echo "$BODY"
-            echo "::endgroup::"
+            echo "Deploy failed"
             exit 1
           fi
-          echo "Deploy thành công."
-          echo "::group::Chi tiết webhook JSON"
-          echo "$BODY" | python3 -m json.tool 2>/dev/null || echo "$BODY"
-          echo "::endgroup::"
