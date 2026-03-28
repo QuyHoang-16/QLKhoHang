@@ -1,4 +1,4 @@
-﻿@model QuanLyKho.Models.Invent.Branch
+@model QuanLyKho.Models.Invent.Branch
 
 @{
     ViewData["Title"] = "Chi tiết";
@@ -9,39 +9,61 @@
 <div class="row">
     <div class="col-md-9">
         <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">
+                    <i class="fa fa-building-o text-primary"></i>
+                    @Html.DisplayFor(m => m.branchName)
+                </h3>
+                @if (Model.isDefaultBranch)
+                {
+                    <span class="label label-success pull-right">Mặc định</span>
+                }
+            </div>
             <div class="box-body">
-                <div>
-                    <dl class="dl-horizontal">
+                @{
+                    var addressParts = new List<string>();
+                    if (!string.IsNullOrWhiteSpace(Model.street1)) { addressParts.Add(Model.street1); }
+                    if (!string.IsNullOrWhiteSpace(Model.street2)) { addressParts.Add(Model.street2); }
+                    if (!string.IsNullOrWhiteSpace(Model.city)) { addressParts.Add(Model.city); }
+                    if (!string.IsNullOrWhiteSpace(Model.province)) { addressParts.Add(Model.province); }
+                    if (!string.IsNullOrWhiteSpace(Model.country)) { addressParts.Add(Model.country); }
+                    var addressText = string.Join(", ", addressParts);
+                }
 
-                        <dt>Tên Chi Nhánh</dt>
-                        <dd>@Html.DisplayFor(m => m.branchName)</dd>
-
-                        <dt>Mô Tả Chi Nhánh</dt>
-                        <dd>@Html.DisplayFor(m => m.description)</dd>
-
-                        <dt>Là Chi Nhánh Mặc Định?</dt>
-                        <dd>@Html.DisplayFor(m => m.isDefaultBranch)</dd>
-
-                        <dt>Địa Chỉ 1</dt>
-                        <dd>@Html.DisplayFor(m => m.street1)</dd>
-
-                        <dt>Địa Chỉ 2</dt>
-                        <dd>@Html.DisplayFor(m => m.street2)</dd>
-
-                        <dt>Thành Phố</dt>
-                        <dd>@Html.DisplayFor(m => m.city)</dd>
-
-                        <dt>Tỉnh/Quận/Huyện</dt>
-                        <dd>@Html.DisplayFor(m => m.province)</dd>
-
-                        <dt>Quốc Gia</dt>
-                        <dd>@Html.DisplayFor(m => m.country)</dd>
-
-                        <dt>Ngày Tạo</dt>
-                        <dd>@Html.DisplayFor(m => m.createdAt)</dd>
-
-                    </dl>
-                </div>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th style="width: 180px;">Mô tả</th>
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(Model.description))
+                                {
+                                    @Html.DisplayFor(m => m.description)
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Chưa cập nhật</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Địa chỉ</th>
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(addressText))
+                                {
+                                    <i class="fa fa-map-marker text-red"></i> @addressText
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Chưa cập nhật</span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Ngày tạo</th>
+                            <td>@Model.createdAt.ToString("dd/MM/yyyy HH:mm")</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="box-footer">

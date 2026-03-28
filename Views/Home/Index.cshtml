@@ -1,193 +1,109 @@
 @using QuanLyKho.Models.Invent
 @inject QuanLyKho.Data.ApplicationDbContext Context
+
 @{
-    ViewData["Title"] = "Trang chủ";
-    Layout = "_AdminlteNetcore";
+    var stocks = new[]
+{
+    new { Product = "P-001", QtyPo = 100, QtyReceiving = 100, QtySo = 50, QtyShipment = 30, QtyOnhand = 70 },
+    new { Product = "P-002", QtyPo = 200, QtyReceiving = 150, QtySo = 120, QtyShipment = 80, QtyOnhand = 70 },
+    new { Product = "P-003", QtyPo = 300, QtyReceiving = 250, QtySo = 200, QtyShipment = 150, QtyOnhand = 100 }
+};
 
     int po = Context.PurchaseOrders.Count();
     int so = Context.SalesOrders.Count();
     int shipment = Context.Shipments.Count();
     int receive = Context.Receivings.Count();
-
-    List<VMStock> stocks = new List<VMStock>();
-    List<Product> products = new List<Product>();
-    products = Context.Products.ToList();
-    foreach (var item in products)
-    {
-        VMStock stock = new VMStock();
-        stock.Product = item.productCode;
-        stock.QtyPO = Context.PurchaseOrderLines.Where(x => x.productId.Equals(item.productId)).Sum(x => x.qty);
-        stock.QtyReceiving = Context.ReceivingLines.Where(x => x.productId.Equals(item.productId)).Sum(x => x.qtyReceive);
-        stock.QtySO = Context.SalesOrderLines.Where(x => x.productId.Equals(item.productId)).Sum(x => x.qty);
-        stock.QtyShipment = Context.ShipmentLines.Where(x => x.productId.Equals(item.productId)).Sum(x => x.qtyShipment);
-        stock.QtyOnhand = stock.QtyReceiving - stock.QtyShipment;
-
-        stocks.Add(stock);
-    }
 }
 
-
-
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-
-    <!-- Main content -->
     <section class="content">
-        <div class="row">
-            <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-aqua">
-                    <div class="inner">
-                        <h3>@po</h3>
-                        <p>Đơn mua hàng</p>
-                    </div>
-                    <div class="icon">
+        <div class="home-dashboard">
+            <!-- DASHBOARD CARDS -->
+            <div class="row">
+
+                <div class="col-lg-3 col-xs-6">
+                    <div class="dashboard-card bg-blue">
+                        <div>
+                            <h2>@po</h2>
+                            <p>Đơn mua hàng</p>
+                        </div>
                         <i class="fa fa-file-text"></i>
                     </div>
-                    <a href="@Url.Action("Index", "PurchaseOrder")" class="small-box-footer">
-                        Xem chi tiết <i class="fa fa-arrow-circle-right"></i>
-                    </a>
                 </div>
-            </div>
 
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-green">
-                    <div class="inner">
-                        <h3>@so</h3>
-                        <p>Đơn bán hàng</p>
-                    </div>
-                    <div class="icon">
+                <div class="col-lg-3 col-xs-6">
+                    <div class="dashboard-card bg-green">
+                        <div>
+                            <h2>@so</h2>
+                            <p>Đơn bán hàng</p>
+                        </div>
                         <i class="fa fa-cart-plus"></i>
                     </div>
-                    <a href="@Url.Action("Index", "SalesOrder")" class="small-box-footer">
-                        Xem chi tiết <i class="fa fa-arrow-circle-right"></i>
-                    </a>
                 </div>
-            </div>
 
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-yellow">
-                    <div class="inner">
-                        <h3>@receive</h3>
-                        <p>Nhập hàng</p>
-                    </div>
-                    <div class="icon">
+                <div class="clearfix visible-xs-block"></div>
+
+                <div class="col-lg-3 col-xs-6">
+                    <div class="dashboard-card bg-orange">
+                        <div>
+                            <h2>@receive</h2>
+                            <p>Nhập hàng</p>
+                        </div>
                         <i class="fa fa-truck"></i>
                     </div>
-                    <a href="@Url.Action("Index", "Receiving")" class="small-box-footer">
-                        Xem chi tiết <i class="fa fa-arrow-circle-right"></i>
-                    </a>
                 </div>
-            </div>
 
-            <div class="col-lg-3 col-xs-6">
-                <div class="small-box bg-red">
-                    <div class="inner">
-                        <h3>@shipment</h3>
-                        <p>Giao hàng</p>
-                    </div>
-                    <div class="icon">
+                <div class="col-lg-3 col-xs-6">
+                    <div class="dashboard-card bg-red">
+                        <div>
+                            <h2>@shipment</h2>
+                            <p>Giao hàng</p>
+                        </div>
                         <i class="fa fa-plane"></i>
                     </div>
-                    <a href="@Url.Action("Index", "Shipment")" class="small-box-footer">
-                        Xem chi tiết <i class="fa fa-arrow-circle-right"></i>
-                    </a>
+                </div>
+
+            </div>
+
+
+
+            <!-- TABLE -->
+            <div class="card-box">
+                <div class="card-header">
+                    <h3>📦 Tồn kho theo thời gian thực</h3>
+                    <input type="text" id="mainSearch" placeholder="🔍 Tìm kiếm...">
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table custom-table">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>SL mua</th>
+                                <th>SL nhập</th>
+                                <th>SL bán</th>
+                                <th>SL giao</th>
+                                <th>Tồn kho</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in stocks)
+                            {
+                                <tr>
+                                    <td><b>@item.Product</b></td>
+                                    <td>@item.QtyPo</td>
+                                    <td>@item.QtyReceiving</td>
+                                    <td>@item.QtySo</td>
+                                    <td>@item.QtyShipment</td>
+                                    <td>
+                                        <span class="badge-stock">@item.QtyOnhand</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
-        
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="box box-warning">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Tồn kho theo thời gian thực</h3>
-                        <div class="box-tools pull-right">
-                            <div class="has-feedback">
-                                <input type="text" id="mainSearch" class="form-control input-sm" placeholder="Tìm kiếm...">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="box-body no-padding">
-                        <div class="table-responsive mailbox-messages">
-                            <table class="table table-hover table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th><i class="fa fa-tags"></i> Sản phẩm</th>
-                                        <th><i class="fa fa-file-text"></i> SL mua</th>
-                                        <th><i class="fa fa-truck"></i> SL nhập</th>
-                                        <th><i class="fa fa-cart-plus"></i> SL bán</th>
-                                        <th><i class="fa fa-plane"></i> SL giao</th>
-                                        <th class="text-aqua"><i class="fa fa-check-circle"></i> SL tồn kho</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in stocks)
-                                    {
-                                        <tr>
-                                            <td>@item.Product</td>
-                                            <td>@item.QtyPO</td>
-                                            <td>@item.QtyReceiving</td>
-                                            <td>@item.QtySO</td>
-                                            <td>@item.QtyShipment</td>
-                                            <td>@item.QtyOnhand</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
     </section>
-    <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
-@section Styles {
-
-}
-
-
-@section Scripts {
-    <!-- ChartJS -->
-    <script src="~/adminlte/components/chart.js/Chart.js"></script>
-    <script>
-        $(document).ready(function () {
-            var mainTable;
-
-            mainTable = $('.table').DataTable({
-                "lengthChange": false,
-                "info": false,
-                "searching": true,
-                "dom": 'lrtip',
-                "scrollX": false
-            });
-
-            $('#mainSearch').keyup(function () {
-                mainTable.search($(this).val()).draw();
-            });
-
-
-
-
-
-
-
-
-
-        });
-
-
-
-
-    </script>
-}
-
-

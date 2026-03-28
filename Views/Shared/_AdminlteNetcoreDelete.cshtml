@@ -49,13 +49,20 @@
                         <div class="box box-danger">
 
                             <div class="box-body">
+                                @if (!string.IsNullOrWhiteSpace(ViewData["DeleteInfo"] as string))
+                                {
+                                    <div class="callout callout-warning" style="margin-bottom: 15px;">
+                                        <h4><i class="fa fa-warning"></i> Lưu ý</h4>
+                                        <p>@ViewData["DeleteInfo"]</p>
+                                    </div>
+                                }
                                 @RenderBody()
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <div class="form-group">
                                     <form asp-action="Delete">
-                                        <input type="hidden" asp-for="@id" />
+                                        <input type="hidden" name="id" value="@id" />
                                         @if (isCanDeleted)
                                         {
                                             <input type="submit" value="Xóa" class="btn btn-danger" />
@@ -69,8 +76,18 @@
                             <!-- /.box-footer-->
                         </div>
                         <!-- /.box -->
+                    </div>
+                    <div class="col-md-3">
+                        @if (!isCanDeleted)
+                        {
+                            <div class="callout callout-danger" style="margin-bottom: 0!important;">
+                                <h4><i class="fa fa-ban"></i> Không thể xóa</h4>
+                                <p>Đối tượng này đang được sử dụng trong dữ liệu liên quan.</p>
+                            </div>
+                        }
+                    </div>
+                </div>
             </section>
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         @Html.Partial("_AdminlteNetcoreFooter")

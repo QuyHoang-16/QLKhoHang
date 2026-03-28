@@ -1,7 +1,8 @@
-﻿@model QuanLyKho.Models.Invent.Branch
+@model QuanLyKho.Models.Invent.Branch
 
 @{
-    ViewData["Title"] = "Sửa";
+    ViewData["Title"] = "Cập nhật Chi nhánh";
+    ViewData["HeaderText"] = "Cập nhật Chi nhánh";
     Layout = "~/Views/Shared/_AdminlteNetcoreEdit.cshtml";
     ViewData["EntityIcon"] = "fa fa-building-o";
 }
@@ -16,16 +17,21 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Tên Chi Nhánh</label>
-                    <input asp-for="branchName" class="form-control" />
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                        <input asp-for="branchName" class="form-control" placeholder="Ví dụ: Chi nhánh Hà Nội" />
+                    </div>
                     <span asp-validation-for="branchName" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="control-label">Là Chi Nhánh Mặc Định?</label>
+                    <label class="control-label">Thiết lập</label>
                     <div class="checkbox">
-                        <input asp-for="isDefaultBranch" /> &nbsp; Có
+                        <label>
+                            <input asp-for="isDefaultBranch" /> Đặt làm chi nhánh mặc định
+                        </label>
                     </div>
                 </div>
             </div>
@@ -33,7 +39,7 @@
 
         <div class="form-group">
             <label class="control-label">Mô Tả Chi Nhánh</label>
-            <input asp-for="description" class="form-control" />
+            <textarea asp-for="description" class="form-control" rows="3" placeholder="Ghi chú ngắn về chi nhánh"></textarea>
             <span asp-validation-for="description" class="text-danger"></span>
         </div>
 
@@ -41,7 +47,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Địa Chỉ 1</label>
-                    <input asp-for="street1" class="form-control" />
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                        <input asp-for="street1" class="form-control" placeholder="Số nhà, đường..." />
+                    </div>
                     <span asp-validation-for="street1" class="text-danger"></span>
                 </div>
             </div>
@@ -49,7 +58,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label">Địa Chỉ 2</label>
-                    <input asp-for="street2" class="form-control" />
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-map-o"></i></span>
+                        <input asp-for="street2" class="form-control" placeholder="Phường/Xã, Quận/Huyện..." />
+                    </div>
                     <span asp-validation-for="street2" class="text-danger"></span>
                 </div>
             </div>
@@ -59,7 +71,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Thành Phố</label>
-                    <input asp-for="city" class="form-control" />
+                    <input asp-for="city" class="form-control" placeholder="Thành phố" />
                     <span asp-validation-for="city" class="text-danger"></span>
                 </div>
             </div>
@@ -67,7 +79,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Tỉnh/Quận/Huyện</label>
-                    <input asp-for="province" class="form-control" />
+                    <input asp-for="province" class="form-control" placeholder="Tỉnh/Quận/Huyện" />
                     <span asp-validation-for="province" class="text-danger"></span>
                 </div>
             </div>
@@ -75,7 +87,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label class="control-label">Quốc Gia</label>
-                    <input asp-for="country" class="form-control" />
+                    <input asp-for="country" class="form-control" placeholder="Việt Nam" />
                     <span asp-validation-for="country" class="text-danger"></span>
                 </div>
             </div>
@@ -87,7 +99,7 @@
 @section Styles{
 
     <!-- iCheck -->
-    <link rel="stylesheet" href="~/adminlte/plugins/iCheck/all.css" />
+    <link rel="stylesheet" href="~/AdminLTE/plugins/iCheck/all.css" />
 
 }
 
@@ -97,13 +109,13 @@
 
 @section Scripts {
     <!-- iCheck -->
-    <script src="~/adminlte/plugins/iCheck/icheck.min.js"></script>
+    <script src="~/AdminLTE/plugins/iCheck/icheck.min.js"></script>
 
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     <script>
         $(function () {
-            $('input').iCheck({
+            $('input[type=checkbox], input[type=radio]').iCheck({
                 checkboxClass: 'icheckbox_square-blue',
                 radioClass: 'iradio_square-blue',
                 increaseArea: '20%' /* optional */

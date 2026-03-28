@@ -1,26 +1,15 @@
-name: Deploy to iThutech
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /app
 
-on:
-  push:
-    branches:
-      - main
+COPY . ./
+RUN dotnet restore
+RUN dotnet publish -c Release -o out
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# Run stage
+FROM mcr.microsoft.com/dotnet/aspnet:6.0
+WORKDIR /app
+COPY --from=build /app/out .
 
-    steps:
-      - name: Trigger Deploy Webhook
-        run: |
-          REPO="quy1606/qlkhohang"
-          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "${{ secrets.DEPLOY_URL }}?repo=$REPO&tag=latest")
-          BODY=$(echo "$RESPONSE" | head -n1)
-          CODE=$(echo "$RESPONSE" | tail -n1)
+EXPOSE 80
 
-          echo "HTTP CODE: $CODE"
-          echo "RESPONSE: $BODY"
-
-          if [ "$CODE" -lt 200 ] || [ "$CODE" -ge 300 ]; then
-            echo "Deploy failed"
-            exit 1
-          fi
+ENTRYPOINT ["dotnet", "QuanLyKho.dll"]
